@@ -1,29 +1,39 @@
-import React from 'react'
-import Header from './Components/Header/Header'
-import LandPage from './Components/LandPage/LandPage'
+import React from "react";
+import LandPage from "./Components/LandPage/LandPage";
+import JobRegister from "./Components/JobRegister/JobRegister";
+import JobList from "./Components/JobList/JobList";
+import ShopCart from "./Components/ShopCart/ShopCart";
+import Header from "./Components/Header/Header";
 
 export default class App extends React.Component {
   
-  
-  
   state = {
-    actualScreen: "landpage"
-  } 
+    actualScreen: "jobRegister",
+  };
 
+  changeScreen = () => {
+    switch (this.state.actualScreen) {
+      case "landpage":
+        return <LandPage />;
+      case "jobRegister":
+        return <JobRegister />;
+      case "jobList":
+        return <JobList />;
+      case "shopCart":
+        return <ShopCart />;
+    }
+  };
+
+  goTo = (page) => {
+    this.setState({ actualScreen: page });
+  };
 
   render() {
-    
-    switch(this.state.actualScreen){
-      case "landpage" : 
-      return 
-    }
-    
     return (
       <div>
-        <Header></Header>
-        <LandPage></LandPage>
+        <Header changeScreen={this.goTo} />
+        {this.changeScreen()}
       </div>
-    )
+    );
   }
 }
-
