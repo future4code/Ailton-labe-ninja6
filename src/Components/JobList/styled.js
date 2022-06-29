@@ -78,6 +78,10 @@ export const Filter = styled.aside`
   height: 500px;
   border: 1px solid black;
   box-shadow: 4px 4px darkgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 export const PageCenter = styled.div`
