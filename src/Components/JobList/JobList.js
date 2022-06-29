@@ -51,13 +51,7 @@ export default class JobList extends React.Component {
                   <JobCard key={data.id}>
                     <h1>{data.title.toUpperCase()}</h1>
                     <h3>{`$${data.price} Pila`}</h3>
-                    <p>{`Data de expiração: ${data.dueDate.slice(
-                      8,
-                      10
-                    )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
-                      2,
-                      4
-                    )}`}</p>
+                    <p>{`Data de expiração: ${data.dueDate.slice(8,10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2,4)}`}</p>
                     <DetailsDiv>
                       <p>Ver Detalhes</p>
                       <img src={Cart} />
