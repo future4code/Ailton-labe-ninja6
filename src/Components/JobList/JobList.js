@@ -11,6 +11,7 @@ import {
   MediumCart,
 } from "./styled";
 import Cart from "../img/iconcart.png";
+import JobDetails from "../JobDetails/JobDetails";
 
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
@@ -24,7 +25,10 @@ export default class JobList extends React.Component {
     maxPrice: "",
     sortingParameter: "title",
     order: 1,
+    details: false,
+    clickedService: ""
   };
+
   componentDidMount() {
     this.getAllJobs();
   }
@@ -34,12 +38,20 @@ export default class JobList extends React.Component {
       .get(url, demoauth)
       .then((res) => {
         this.setState({ jobs: res.data.jobs });
-        console.log(res.data.jobs[0]);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  getActualId = (id) => {
+    this.setState({ clickedService: id})
+    this.setState({ details: true})
+  }
+
+  closePopUp = () => {
+    this.setState({ details: false})
+  }
 
   handleInputQuery = (e) => {
     this.setState({ query: e.target.value })
@@ -65,35 +77,36 @@ export default class JobList extends React.Component {
     return (
       <>
         <Container>
+          {this.state.details ? <JobDetails closePopUp={this.closePopUp} id={this.state.clickedService}/> : <div>ele gooosta</div>}
           <ServiceTitle>Serviços disponíveis</ServiceTitle>
           <PageCenter>
             <Filter>
               <h2>FILTROS</h2>
               <span>
-              <input
-                type="text"
-                placeholder="Pesquisa"
-                value={this.state.query}
-                onChange={this.handleInputQuery}
-              />
+                <input
+                  type="text"
+                  placeholder="Pesquisa"
+                  value={this.state.query}
+                  onChange={this.handleInputQuery}
+                />
               </span>
-              
+
               <span>
-              <input
-                type="number"
-                placeholder="Preço Mínimo"
-                value={this.state.minPrice}
-                onChange={this.handleInputMinPrice}
-              />
+                <input
+                  type="number"
+                  placeholder="Preço Mínimo"
+                  value={this.state.minPrice}
+                  onChange={this.handleInputMinPrice}
+                />
               </span>
-              
+
               <span>
-              <input
-                type="number"
-                placeholder="Preço Máximo"
-                value={this.state.maxPrice}
-                onChange={this.handleInputMaxPrice}
-              />
+                <input
+                  type="number"
+                  placeholder="Preço Máximo"
+                  value={this.state.maxPrice}
+                  onChange={this.handleInputMaxPrice}
+                />
               </span>
 
               <div>
@@ -136,26 +149,26 @@ export default class JobList extends React.Component {
                 })
                 .sort((currentJob, nextJob) => {
                   switch (this.state.sortingParameter) {
-                   case "title":
-                    return this.state.order * (currentJob.title.localeCompare(nextJob.title))
-                      case "dueDate":
-                        return this.state.order * (new Date (currentJob.dueDate).getTime() - new Date(nextJob.dueDate).getTime())
-                      default:
-                        return this.state.order * (currentJob.price - nextJob.price)
-                }
+                    case "title":
+                      return this.state.order * (currentJob.title.localeCompare(nextJob.title))
+                    case "dueDate":
+                      return this.state.order * (new Date(currentJob.dueDate).getTime() - new Date(nextJob.dueDate).getTime())
+                    default:
+                      return this.state.order * (currentJob.price - nextJob.price)
+                  }
                 })
                 .map((data) => {
                   return (
-              <JobCard key={data.id}>
-                <h1>{data.title.toUpperCase()}</h1>
-                <h3>{`$${data.price} Pila`}</h3>
-                <p>{`Data de expiração: ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
-                <DetailsDiv>
-                  <p>Ver Detalhes</p>
-                  <img src={Cart} />
-                </DetailsDiv>
-              </JobCard>
-              );
+                    <JobCard key={data.id}>
+                      <h1>{data.title.toUpperCase()}</h1>
+                      <h3>{`$${data.price} Pila`}</h3>
+                      <p>{`Data de expiração: ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
+                      <DetailsDiv>
+                        <p onClick={() => this.getActualId(data.id)}>Ver Detalhes</p>
+                        <img src={Cart} />
+                      </DetailsDiv>
+                    </JobCard>
+                  );
                 })}
             </ContainerMid>
             <MediumCart>
