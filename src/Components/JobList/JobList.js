@@ -15,6 +15,7 @@ import {
 } from "./styled";
 import Cart from "../img/iconcart.png";
 import JobDetails from "../JobDetails/JobDetails";
+import lixo from "../img/latadelixo.png"
 
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
@@ -81,7 +82,7 @@ export default class JobList extends React.Component {
         <CartCard>
           <p>{dados.title}</p>
           <p>R$:{dados.price}</p>
-          <button onClick={()=>this.props.removeService(dados.id)}>x</button>
+          <img src={lixo} onClick={()=>this.props.removeService(dados.id)} />
           </CartCard>
       )})
       const somaPrecos = this.props.carrinho
