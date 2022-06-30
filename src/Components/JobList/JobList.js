@@ -9,6 +9,9 @@ import {
   Filter,
   PageCenter,
   MediumCart,
+  ServiceCart,
+  CartCard,
+  FooterCart
 } from "./styled";
 import Cart from "../img/iconcart.png";
 import JobDetails from "../JobDetails/JobDetails";
@@ -26,7 +29,8 @@ export default class JobList extends React.Component {
     sortingParameter: "title",
     order: 1,
     details: false,
-    clickedService: ""
+    clickedService: "",
+    carrinho:[],
   };
 
   componentDidMount() {
@@ -72,8 +76,44 @@ export default class JobList extends React.Component {
   handleInputOrder = (e) => {
     this.setState({ order: e.target.value })
   }
-
+  addServices = (info,name)=>{
+    const filterServices = this.state.jobs.filter((dados)=>{
+      return dados.id === info
+    })
+    const cartCopy = [...this.state.carrinho]
+    const cartControl = cartCopy.map((item)=>{
+      return item.id
+    }).find((dado)=>{
+      return dado === info
+    })
+    if(cartControl===undefined){
+      cartCopy.push(filterServices[0])
+      this.setState({carrinho:cartCopy})
+    }else{
+      alert(`O serviço ${name} já foi adicionado.`)
+    }
+  }
+  removeService = (id)=>{
+    const deleteService = this.state.carrinho.filter((dados)=>{
+      return dados.id !== id
+    })
+    this.setState({carrinho:deleteService})
+  }
+  onClickFinalCart = ()=>{
+    return alert("Compra finalizada com sucesso!")
+  }
   render() {
+      const cartAdd = this.state.carrinho.map((dados)=>{
+        return (
+        <CartCard>
+          <p>{dados.title}</p>
+          <p>R$:{dados.price}</p>
+          <button onClick={()=>this.removeService(dados.id)}>x</button>
+          </CartCard>
+      )})
+      const somaPrecos = this.state.carrinho
+      .map((item) => item.price)
+      .reduce((prev, curr) => prev + curr, 0);
     return (
       <>
         <Container>
@@ -165,14 +205,19 @@ export default class JobList extends React.Component {
                       <p>{`Data de expiração: ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
                       <DetailsDiv>
                         <p onClick={() => this.getActualId(data.id)}>Ver Detalhes</p>
-                        <img src={Cart} />
+                        <img onClick={()=>this.addServices(data.id,data.title)} src={Cart} />
                       </DetailsDiv>
                     </JobCard>
                   );
                 })}
             </ContainerMid>
             <MediumCart>
-              Carrinho
+              <h1>Carrinho</h1>
+              <ServiceCart>{cartAdd}</ServiceCart>
+              <FooterCart>
+              <h4>Valor total: R$ ${somaPrecos}</h4>
+              <button onClick={this.onClickFinalCart} >Finalizar Compra</button>
+              </FooterCart>
             </MediumCart>
           </PageCenter>
         </Container>

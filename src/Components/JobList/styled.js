@@ -95,4 +95,19 @@ export const MediumCart = styled.aside`
   height: 500px;
   border: 1px solid black;
   box-shadow: 4px 4px darkgray;
+
 `;
+export const CartCard = styled.div`
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid red;
+  color: black;
+`
+export const ServiceCart = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const FooterCart = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
