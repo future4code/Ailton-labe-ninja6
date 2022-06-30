@@ -14,6 +14,9 @@ align-items: center;
 overflow: auto;
 border: 2px solid #ff5252;
 box-shadow: 4px 4px #ff5252;
+img {
+    width: 32px;
+}
 h1, h2 {
     color: #ff5252
 }
