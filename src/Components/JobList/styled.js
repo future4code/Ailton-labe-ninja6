@@ -4,8 +4,8 @@ export const ContainerMid = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 60%;
-  height: 100vh;
+  width: 60vw;
+  height: 70vh;
   gap: 12px;
   margin: 12px 0px;
   overflow: auto;
@@ -27,6 +27,7 @@ export const JobCard = styled.div`
   :hover {
     width: 42%;
     height: 160px;
+    transition: .3s ease;
   }
   h1 {
     color: #ff5252;

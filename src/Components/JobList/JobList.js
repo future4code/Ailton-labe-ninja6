@@ -77,7 +77,7 @@ export default class JobList extends React.Component {
     return (
       <>
         <Container>
-          {this.state.details ? <JobDetails closePopUp={this.closePopUp} id={this.state.clickedService}/> : <div>ele gooosta</div>}
+          {this.state.details && <JobDetails closePopUp={this.closePopUp} id={this.state.clickedService}/>}
           <ServiceTitle>Serviços disponíveis</ServiceTitle>
           <PageCenter>
             <Filter>
@@ -138,8 +138,8 @@ export default class JobList extends React.Component {
             <ContainerMid>
               {this.state.jobs
                 .filter(job => {
-                  return job.title.toLowerCase().includes(this.state.query) ||
-                    job.description.toLowerCase().includes(this.state.query)
+                  return job.title.toLowerCase().includes(this.state.query.toLowerCase()) || // Avisar o Daniel!!!
+                    job.description.toLowerCase().includes(this.state.query.toLowerCase())
                 })
                 .filter(job => {
                   return this.state.minPrice === "" || job.price >= this.state.minPrice
