@@ -9,8 +9,31 @@ export default class App extends React.Component {
   
   state = {
     actualScreen: "jobList",
+    carrinho:[],
   };
-
+  addServices = (info,name,jobs)=>{
+    const filterServices = jobs.filter((dados)=>{
+      return dados.id === info
+    })
+    const cartCopy = [...this.state.carrinho]
+    const cartControl = cartCopy.map((item)=>{
+      return item.id
+    }).find((dado)=>{
+      return dado === info
+    })
+    if(cartControl===undefined){
+      cartCopy.push(filterServices[0])
+      this.setState({carrinho:cartCopy})
+    }else{
+      alert(`O serviço ${name} já foi adicionado.`)
+    }
+  }
+  removeService = (id)=>{
+    const deleteService = this.state.carrinho.filter((dados)=>{
+      return dados.id !== id
+    })
+    this.setState({carrinho:deleteService})
+  }
   changeScreen = () => {
     switch (this.state.actualScreen) {
       case "landpage":
@@ -18,9 +41,9 @@ export default class App extends React.Component {
       case "jobRegister":
         return <JobRegister />;
       case "jobList":
-        return <JobList />;
+        return <JobList carrinho={this.state.carrinho} addServices={this.addServices} removeService={this.removeService} goTo={this.goTo} />;
       case "shopCart":
-        return <ShopCart />;
+        return <ShopCart carrinho={this.state.carrinho} removeService={this.removeService}/>;
     }
   };
 

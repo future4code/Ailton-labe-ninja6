@@ -30,7 +30,6 @@ export default class JobList extends React.Component {
     order: 1,
     details: false,
     clickedService: "",
-    carrinho:[],
   };
 
   componentDidMount() {
@@ -76,48 +75,22 @@ export default class JobList extends React.Component {
   handleInputOrder = (e) => {
     this.setState({ order: e.target.value })
   }
-  addServices = (info,name)=>{
-    const filterServices = this.state.jobs.filter((dados)=>{
-      return dados.id === info
-    })
-    const cartCopy = [...this.state.carrinho]
-    const cartControl = cartCopy.map((item)=>{
-      return item.id
-    }).find((dado)=>{
-      return dado === info
-    })
-    if(cartControl===undefined){
-      cartCopy.push(filterServices[0])
-      this.setState({carrinho:cartCopy})
-    }else{
-      alert(`O serviço ${name} já foi adicionado.`)
-    }
-  }
-  removeService = (id)=>{
-    const deleteService = this.state.carrinho.filter((dados)=>{
-      return dados.id !== id
-    })
-    this.setState({carrinho:deleteService})
-  }
-  onClickFinalCart = ()=>{
-    return alert("Compra finalizada com sucesso!")
-  }
   render() {
-      const cartAdd = this.state.carrinho.map((dados)=>{
+      const cartAdd = this.props.carrinho.map((dados)=>{
         return (
         <CartCard>
           <p>{dados.title}</p>
           <p>R$:{dados.price}</p>
-          <button onClick={()=>this.removeService(dados.id)}>x</button>
+          <button onClick={()=>this.props.removeService(dados.id)}>x</button>
           </CartCard>
       )})
-      const somaPrecos = this.state.carrinho
+      const somaPrecos = this.props.carrinho
       .map((item) => item.price)
       .reduce((prev, curr) => prev + curr, 0);
     return (
       <>
         <Container>
-          {this.state.details && <JobDetails closePopUp={this.closePopUp} id={this.state.clickedService}/>}
+          {this.state.details && <JobDetails  jobs={this.state.jobs} addServices={this.props.addServices} closePopUp={this.closePopUp} id={this.state.clickedService}/>}
           <ServiceTitle>Serviços disponíveis</ServiceTitle>
           <PageCenter>
             <Filter>
@@ -205,7 +178,7 @@ export default class JobList extends React.Component {
                       <p>{`Data de expiração: ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
                       <DetailsDiv>
                         <p onClick={() => this.getActualId(data.id)}>Ver Detalhes</p>
-                        <img onClick={()=>this.addServices(data.id,data.title)} src={Cart} />
+                        <img onClick={()=>this.props.addServices(data.id,data.title,this.state.jobs)} src={Cart} />
                       </DetailsDiv>
                     </JobCard>
                   );
@@ -216,7 +189,7 @@ export default class JobList extends React.Component {
               <ServiceCart>{cartAdd}</ServiceCart>
               <FooterCart>
               <h4>Valor total: R$ ${somaPrecos}</h4>
-              <button onClick={this.onClickFinalCart} >Finalizar Compra</button>
+              <button onClick={()=>this.props.goTo("shopCart")} >Finalizar Compra</button>
               </FooterCart>
             </MediumCart>
           </PageCenter>
