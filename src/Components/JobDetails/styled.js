@@ -22,13 +22,15 @@ img {
 h1, h2 {
     color: #ff5252
 }
-p, h3 {
+ h3 {
     color: white;
 }
 `
 export const PaymentDiv = styled.div `
     display: flex;
     gap: 12px;
+    font-size: 25px;
+    color:white;
 `
 export const Description = styled.p`
 color: white;
@@ -37,8 +39,12 @@ font-size: 25px;
 
 export const BackDetails = styled.div`
 display: flex;
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
+width: 20%;
+
+p, img{ color: white;
+    cursor: pointer;}
 
 `
 
@@ -48,4 +54,12 @@ height: 100vh;
 background-color: rgba(0, 0, 0, 0.75);
 position: fixed;
 top: 0;
+`
+
+export const MethodsCard = styled.p`
+font-size: 23px;
+background-color: #ffd700;
+color:#000;
+padding: 0 6px;
+border-radius: 12px;
 `

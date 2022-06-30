@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-import styled from "styled-components";
-import { 
-  Container, 
-  Containerzudo, 
+import {
+  Container,
+  Containerzudo,
   Description,
-  BackDetails,PaymentDiv } from "../JobDetails/styled";
+  BackDetails, 
+  PaymentDiv,
+  MethodsCard
+} from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 
 const demoauth = {
@@ -36,17 +38,18 @@ export default class JobDetails extends React.Component {
   };
 
   render() {
-    const paymentMethods= this.state.jobInfos.paymentMethods?.map((dados, index)=>{
-      return <p key={index}>{dados}</p>
+    const paymentMethods = this.state.jobInfos.paymentMethods?.map((dados, index) => {
+      return <MethodsCard key={index}>{dados.toUpperCase()}</MethodsCard>
     })
     return (
       <Containerzudo>
         <Container>
-          <h1>{this.state.jobInfos.title}</h1>
+          <h1>{this.state.jobInfos.title?.toUpperCase()}</h1>
           <Description>{this.state.jobInfos.description}</Description>
           <PaymentDiv> Métodos de pagamento: {paymentMethods}</PaymentDiv>
-          <h3>Preço: {this.state.jobInfos.price}</h3>
-          <h2>{this.state.jobInfos.dueDate}</h2>
+          <h3>R$ {this.state.jobInfos.price} </h3>
+          <h2>{`Data de expiração: ${this.state.jobInfos.dueDate?.slice(8, 10)}/${this.state.jobInfos.dueDate?.slice(5, 7)}/${this.state.jobInfos.dueDate?.slice(0, 4)}`}
+          </h2>
           <BackDetails>
             <p onClick={this.props.closePopUp}>Voltar</p>
             <img src={Cart} />
