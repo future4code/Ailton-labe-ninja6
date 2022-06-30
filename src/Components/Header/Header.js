@@ -21,7 +21,7 @@ export default class Header extends React.Component {
             <ContainerImg>
               <LogoStyle src={Logo} />
             </ContainerImg>
-            <InputStyle placeholder="Buscar serviço"></InputStyle>
+            <InputStyle placeholder="Buscar serviço" onChange={()=>this.props.changeScreen("jobList")}></InputStyle>
             <ContainerLoginAndCart>
               <ContainerCartStyle>
                 <img src={IconCart} />
