@@ -8,7 +8,7 @@ import Header from "./Components/Header/Header";
 export default class App extends React.Component {
   
   state = {
-    actualScreen: "landpage",
+    actualScreen: "jobList",
   };
 
   changeScreen = () => {
