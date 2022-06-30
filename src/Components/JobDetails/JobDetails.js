@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { Container, Containerzudo } from "../JobDetails/styled";
+import { 
+  Container, 
+  Containerzudo, 
+  Description,
+  BackDetails } from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 
 const demoauth = {
@@ -32,16 +36,16 @@ export default class JobDetails extends React.Component {
 
   render() {
     return (
-      <Containerzudo onClick={this.props.closePopUp}>
+      <Containerzudo>
         <Container>
           <h1>{this.state.jobInfos.title}</h1>
-          <h2>{this.state.jobInfos.description}</h2>
-          <h2>{this.state.jobInfos.price}</h2>
+          <Description>{this.state.jobInfos.description}</Description>
+          <h3>{this.state.jobInfos.price}</h3>
           <h2>{this.state.jobInfos.dueDate}</h2>
-          <div>
-            <p>Voltar</p>
+          <BackDetails>
+            <p onClick={this.props.closePopUp}>Voltar</p>
             <img src={Cart} />
-          </div>
+          </BackDetails>
         </Container>
       </Containerzudo>
     );

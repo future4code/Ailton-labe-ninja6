@@ -20,6 +20,21 @@ img {
 h1, h2 {
     color: #ff5252
 }
+p, h3 {
+    color: white;
+}
+`
+
+export const Description = styled.p`
+color: white;
+font-size: 25px;
+`
+
+export const BackDetails = styled.div`
+display: flex;
+justify-content: space-around;
+align-items: center;
+
 `
 
 export const Containerzudo = styled.div`
