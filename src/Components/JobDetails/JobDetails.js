@@ -52,7 +52,7 @@ export default class JobDetails extends React.Component {
           </h2>
           <BackDetails>
             <p onClick={this.props.closePopUp}>Voltar</p>
-            <img src={Cart} />
+            <img onClick={()=>this.props.addServices(this.state.jobInfos.id, this.state.jobInfos.title,this.props.jobs)} src={Cart} />
           </BackDetails>
         </Container>
       </Containerzudo>
