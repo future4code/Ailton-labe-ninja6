@@ -14,6 +14,8 @@ align-items: center;
 overflow: auto;
 border: 2px solid #ff5252;
 box-shadow: 4px 4px #ff5252;
+padding: 32px;
+gap:12px;
 img {
     width: 32px;
 }
@@ -24,7 +26,10 @@ p, h3 {
     color: white;
 }
 `
-
+export const PaymentDiv = styled.div `
+    display: flex;
+    gap: 12px;
+`
 export const Description = styled.p`
 color: white;
 font-size: 25px;
