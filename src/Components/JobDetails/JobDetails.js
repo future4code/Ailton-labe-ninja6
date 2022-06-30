@@ -5,7 +5,7 @@ import {
   Container, 
   Containerzudo, 
   Description,
-  BackDetails } from "../JobDetails/styled";
+  BackDetails,PaymentDiv } from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 
 const demoauth = {
@@ -27,6 +27,7 @@ export default class JobDetails extends React.Component {
     axios
       .get(url, demoauth)
       .then((res) => {
+        console.log(this.state.jobInfos)
         this.setState({ jobInfos: res.data });
       })
       .catch((error) => {
@@ -35,12 +36,16 @@ export default class JobDetails extends React.Component {
   };
 
   render() {
+    const paymentMethods= this.state.jobInfos.paymentMethods?.map((dados, index)=>{
+      return <p key={index}>{dados}</p>
+    })
     return (
       <Containerzudo>
         <Container>
           <h1>{this.state.jobInfos.title}</h1>
           <Description>{this.state.jobInfos.description}</Description>
-          <h3>{this.state.jobInfos.price}</h3>
+          <PaymentDiv> Métodos de pagamento: {paymentMethods}</PaymentDiv>
+          <h3>Preço: {this.state.jobInfos.price}</h3>
           <h2>{this.state.jobInfos.dueDate}</h2>
           <BackDetails>
             <p onClick={this.props.closePopUp}>Voltar</p>
