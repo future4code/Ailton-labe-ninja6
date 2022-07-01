@@ -41,6 +41,7 @@ export default class JobList extends React.Component {
   componentDidMount() {
     this.getAllJobs();
   }
+  
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
     axios
