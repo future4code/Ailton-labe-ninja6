@@ -89,6 +89,7 @@ export default class JobDetails extends React.Component {
                 src={CartPreto}
               />
             </div>
+            <p onClick={()=>this.props.deleteJob(this.state.jobInfos.id)}>Excluir serviço</p>
             <p onClick={this.props.closePopUp}>Voltar</p>
           </BackDetails>
         </Container>

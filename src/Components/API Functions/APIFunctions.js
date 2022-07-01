@@ -13,6 +13,6 @@ export const CreateJob = (title,description,price,paymentMethods,dueDate) => {
         dueDate: dueDate
     }
     axios.post(url, body, demoauth).then((res=>{
-        console.log(res)
+        alert(`O serviço ${title} foi cadastrado com sucesso`)
     })).catch(err=>{alert(err.message)}) 
 }

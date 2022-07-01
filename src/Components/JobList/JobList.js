@@ -53,6 +53,14 @@ export default class JobList extends React.Component {
       });
   };
 
+  deleteJob = (id) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+    axios.get(url, demoauth).then((res)=>{
+      console.log(res)
+      alert('Serviço deletado')      
+    }).catch(res=>{alert('Nosso servidor foi de berço')})
+  }
+
   getActualId = (id) => {
     this.setState({ clickedService: id });
     this.setState({ details: true });
@@ -82,24 +90,20 @@ export default class JobList extends React.Component {
     this.setState({ order: e.target.value });
   };
 
-  // testaBool = () => {
-  //   console.log(this.props.carrinho)
-  //   const bool = 'a'
-  //   bool ? console.log('Verdadeiro') : console.log('Falso')
-  // }
-
   render() {
+
     const cartAdd = this.props.carrinho.map((dados) => {
       return (
         <CartCard key={dados.id}>
           <NameAndPrice>
             <p>{dados.title.toUpperCase()}</p>
-            <p>R${dados.price}</p>
+            <p>${dados.price}</p>
           </NameAndPrice>
           <img src={lixo} onClick={() => this.props.removeService(dados.id)} />
         </CartCard>
       );
     });
+
     const somaPrecos = this.props.carrinho
       .map((item) => item.price)
       .reduce((prev, curr) => prev + curr, 0);
@@ -112,6 +116,7 @@ export default class JobList extends React.Component {
               addServices={this.props.addServices}
               closePopUp={this.closePopUp}
               id={this.state.clickedService}
+              deleteJob={this.deleteJob}
             />
           )}
           <ServiceTitle>Serviços disponíveis</ServiceTitle>
@@ -250,7 +255,7 @@ export default class JobList extends React.Component {
                 })}
             </ContainerMid>
             <MediumCart>
-              <h1>Carrinho</h1>
+              <h1>CARRINHO</h1>
               {this.props.carrinho.length >= 1 ? 
               <ServiceCart>{cartAdd}</ServiceCart>
               : <p>Adicione um item ao carrinho</p> }
