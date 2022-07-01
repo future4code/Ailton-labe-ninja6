@@ -120,7 +120,7 @@ export default class JobRegister extends React.Component {
             )
           }
         >
-          Testar
+          Enviar
         </button>
       </Container>
     );

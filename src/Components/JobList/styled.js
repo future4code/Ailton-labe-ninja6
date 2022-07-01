@@ -110,6 +110,7 @@ export const MediumCart = styled.aside`
   padding: 2px 8px;
   h1{
     height: 10%;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -130,7 +131,9 @@ export const CartCard = styled.div`
   box-shadow: 2px 2px #ff5252;
   background-color: #fff;
   color: black;
-  
+  >img{
+    width: 28px;
+  }  
 `
 export const ServiceCart = styled.div`
   display: flex;
@@ -143,14 +146,19 @@ export const FooterCart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 10%;
-  padding: 16px;
+  padding: 12px;
 `
 
 export const NameAndPrice = styled.div`
-width: 150px;
+width: 100%;
+height: 100%;
 display: flex;
+align-items: center;
+justify-content: space-between;
 gap: 12px;
+/* background-color: lime; */
 `
 
 export const FilterTypeSelect = styled.div`
@@ -170,10 +178,14 @@ width: 300px;
 `
 export const BuyButton = styled.p`
 display: flex;
+justify-content: center;
+align-items: center;
 padding: 0px 4px;
 border: 2px solid #ff5252;
 border-radius: 8px;
 user-select: none;
+width: fit-content;
+white-space: nowrap;
 cursor: pointer;
 :hover{
   background-color: #ff5252;
