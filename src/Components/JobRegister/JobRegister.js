@@ -4,6 +4,11 @@ import { CheckboxContainer } from "./styled";
 import { Container } from "./styled";
 import { InputStyled } from "./styled";
 import { CreateJob } from "../API Functions/APIFunctions";
+import { TitleRegister } from "./styled";
+import { ButtonRegister } from "./styled";
+import { ContainerRegisterGeral } from "./styled";
+import { ContainerSamuraizudo } from "./styled";
+import Samuraizudo2 from "../img/samuraizudo2.jpg"
 
 export default class JobRegister extends React.Component {
   state = {
@@ -51,77 +56,80 @@ export default class JobRegister extends React.Component {
   render() {
     return (
       <Container>
-        <h1>Cadastre seu serviço</h1>
-        <MethodsContainer>
-          <InputStyled
-            placeholder="Titulo"
-            value={this.state.title}
-            onChange={this.handleInputT}
-          />
-          <InputStyled
-            placeholder="Descrição"
-            value={this.state.description}
-            onChange={this.handleInputD}
-          />
-          <InputStyled
-            type={"number"}
-            placeholder="Preço"
-            value={this.state.price}
-            onChange={this.handleInputP}
-          />
+        <ContainerRegisterGeral>
+          <TitleRegister>Torne-se um Samurai</TitleRegister>
+          <MethodsContainer>
+            <InputStyled
+              placeholder="Titulo"
+              value={this.state.title}
+              onChange={this.handleInputT}
+            />
+            <InputStyled
+              placeholder="Descrição"
+              value={this.state.description}
+              onChange={this.handleInputD}
+            />
+            <InputStyled
+              type={"number"}
+              placeholder="Preço"
+              value={this.state.price}
+              onChange={this.handleInputP}
+            />
 
-          <CheckboxContainer>
-            <label>
-              <input
-                onChange={this.checkbox}
-                type="checkbox"
-                value={"Cartão de Débito"}
-              />
-              Cartão de Débito
-            </label>
-            <label>
-              <input
-                onChange={this.checkbox}
-                type="checkbox"
-                value={"Cartão de Crédito"}
-              />
-              Cartão de Crédito
-            </label>
-            <label>
-              <input
-                onChange={this.checkbox}
-                type="checkbox"
-                value={"Paypal"}
-              />
-              Paypal
-            </label>
-            <label>
-              <input
-                onChange={this.checkbox}
-                type="checkbox"
-                value={"Boleto"}
-              />
-              Boleto
-            </label>
-            <label>
-              <input onChange={this.checkbox} type="checkbox" value={"Pix"} />
-              Pix
-            </label>
-          </CheckboxContainer>
-          <InputStyled type="date" onChange={this.date} />
-        </MethodsContainer>
-        <button
-          onClick={()=>CreateJob(
-              this.state.title,
-              this.state.description,
-              this.state.price,
-              this.state.paymentMethods,
-              this.state.date
-            )
-          }
-        >
-          Enviar
-        </button>
+            <CheckboxContainer>
+              <label>
+                <input
+                  onChange={this.checkbox}
+                  type="checkbox"
+                  value={"Cartão de Débito"}
+                />
+                Cartão de Débito
+              </label>
+              <label>
+                <input
+                  onChange={this.checkbox}
+                  type="checkbox"
+                  value={"Cartão de Crédito"}
+                />
+                Cartão de Crédito
+              </label>
+              <label>
+                <input
+                  onChange={this.checkbox}
+                  type="checkbox"
+                  value={"Paypal"}
+                />
+                Paypal
+              </label>
+              <label>
+                <input
+                  onChange={this.checkbox}
+                  type="checkbox"
+                  value={"Boleto"}
+                />
+                Boleto
+              </label>
+              <label>
+                <input onChange={this.checkbox} type="checkbox" value={"Pix"} />
+                Pix
+              </label>
+            </CheckboxContainer>
+            <InputStyled type="date" onChange={this.date} />
+          </MethodsContainer>
+          <ButtonRegister
+            onClick={()=>CreateJob(
+                this.state.title,
+                this.state.description,
+                this.state.price,
+                this.state.paymentMethods,
+                this.state.date
+              )
+            }
+          >
+            Cadastre seu Serviço
+          </ButtonRegister>
+          <ContainerSamuraizudo><img src = {Samuraizudo2}></img></ContainerSamuraizudo>
+        </ContainerRegisterGeral>
       </Container>
     );
   }
