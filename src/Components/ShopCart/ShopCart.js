@@ -1,5 +1,12 @@
 import React from 'react'
-import { JobCard} from '../JobList/styled'
+import {
+  JobCard,
+  PayMethods,
+  Biricutico,
+  Title,
+  CartPage,
+  BigCart } from './styled'
+
 
 export default class ShopCart extends React.Component {
   onClickFinalCart=()=>{
@@ -9,20 +16,22 @@ export default class ShopCart extends React.Component {
     const cartItens = this.props.carrinho.map((data)=>{
       return (
         <JobCard key={data.id}>
-        <h1>{data.title.toUpperCase()}</h1>
+        <Title>{data.title.toUpperCase()}</Title>
+        {/* <h2>{data.description}</h2> */}
         <h3>{`$${data.price} Pila`}</h3>
-        <h3>{data.paymentMethods}</h3>
-        <p>{`Data de expiração: ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
-        <button onClick={()=>this.props.removeService(data.id)}>Remover Serviço</button>
+        <div>{data.paymentMethods.map((item)=>{return(<PayMethods>{item.toUpperCase()}</PayMethods>)})}</div>
+        <p>{`Data de expiração:
+         ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
+        <Biricutico onClick={() => this.props.removeService(data.id)}>Remover Serviço </Biricutico>
       </JobCard>
       )
     })
     return (
-      <>
+      <CartPage>
       <h1>SHOP CART </h1>
-      <div>{cartItens}</div>
+      <BigCart>{cartItens}</BigCart>
       <button onClick={this.onClickFinalCart} >Finalizar Compra</button>
-      </>
+      </CartPage>
     )
   }
 }

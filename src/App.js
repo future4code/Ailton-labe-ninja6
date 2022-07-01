@@ -7,7 +7,7 @@ import Header from "./Components/Header/Header";
 
 export default class App extends React.Component {
   state = {
-    actualScreen: "jobList",
+    actualScreen: "shopCart",
     carrinho: [],
   };
   addServices = (info, name, jobs) => {

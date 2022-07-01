@@ -101,6 +101,7 @@ export default class JobList extends React.Component {
             <p>${dados.price}</p>
           </NameAndPrice>
           <img src={lixo} onClick={() => this.props.removeService(dados.id)} />
+      
         </CartCard>
       );
     });
