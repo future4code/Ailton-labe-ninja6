@@ -9,8 +9,9 @@ import Footer from "./Components/Footer/Footer";
 export default class App extends React.Component {
   state = {
     actualScreen: "landpage",
-    carrinho: [],
+    carrinho: [],    
   };
+  
   addServices = (info, name, jobs) => {
     const filterServices = jobs.filter((dados) => {
       return dados.id === info;
@@ -30,11 +31,15 @@ export default class App extends React.Component {
       alert(`O serviço ${name} já foi adicionado.`);
     }
   };
+
   removeService = (id) => {
+    
+    if (window.confirm('Tem certeza que deseja remover esse serviço do carrinho?')) {
     const deleteService = this.state.carrinho.filter((dados) => {
       return dados.id !== id;
     });
     this.setState({ carrinho: deleteService });
+  }
   };
   changeScreen = () => {
     switch (this.state.actualScreen) {

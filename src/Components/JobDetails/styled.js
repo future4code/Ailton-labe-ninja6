@@ -52,23 +52,8 @@ justify-content: space-between;
 align-items: center;
 width: 80%;
 
-p, img{ color: white;
-    cursor: pointer;}
-
->div{
-    display: flex;
-    width: 40%;
-    background-color: #ff5252;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    border-radius: 4px;
-    padding: 4px;
-    cursor: pointer;
-    :hover{
-        background-color: #ff1a1a;
-        transition: .15s ease;
-    }
+p, img{
+    color: white;
 }
 >p {
     display: flex;
@@ -79,6 +64,7 @@ p, img{ color: white;
     border: 1px solid white;
     /* color: black; */
     border-radius: 4px;
+    cursor: pointer;
     :hover {
         background-color: white;
         color: #000;
@@ -129,4 +115,39 @@ align-items: center;
 justify-content: center;
 width: 200px;
 color: white;
+`
+export const AddedDiv = styled.div`
+display: flex;
+    width: 40%;
+    height: 32px;
+    user-select:none ;
+    background-color: #bbbbbb;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 4px;
+    padding: 4px;
+    :hover{
+        background-color: #fff;
+        transition: .15s ease;
+    }
+    >p {
+        color: #000;
+    }
+`
+
+export const AddDiv = styled.div`
+display: flex;
+    width: 40%;
+    background-color: #ff5252;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+    :hover{
+        background-color: #ff1a1a;
+        transition: .15s ease;
+    }
 `

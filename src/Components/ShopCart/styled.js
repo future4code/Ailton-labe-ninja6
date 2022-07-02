@@ -1,7 +1,6 @@
 import styled, { isStyledComponent } from "styled-components"
 
 export const CartPage = styled.div`
-background-color: #ffff;
 display: flex;
 width: 100%;
 padding: 24px;
@@ -16,9 +15,18 @@ export const T = styled.div`
 padding: 8px;
 `
 export const TitleBig = styled.h1`
-    display: inline;
-    border-bottom: 2px solid #ff5252;
-    box-shadow: 3px 4px #ff5252;
+    width: fit-content;
+    /* margin: 0 auto; */
+    background-color: #303030;
+    color: #fff;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 4px 4px #ff5252;
+    font-weight: 500;
+    margin-left: 36px;
+    :hover {
+
+    }
 `
 export const BigCart = styled.div`
 background-color: #ffff;
@@ -26,13 +34,13 @@ width:100%;
 display: flex;
 gap:12px;
 flex-direction:column;
-padding: 4px;
+padding: 0px 12px;
 overflow: auto;
 height: 700px;
 ::-webkit-scrollbar{
     background-color: #303030;
     border-radius: 12px;
-    width: 16px;
+    width: 12px;
 }
 ::-webkit-scrollbar-thumb{
     background-color: #ff5252;
@@ -86,9 +94,10 @@ justify-content:center;
 align-items: center;
 font-weight: bold;
 gap: 8px;
-:hover p{
-    display: inline;
-    border-bottom: 1px solid white;
+transition: .2s ease;
+:hover{
+    color: white;
+    text-decoration: underline;
 }
 `
 export const PayMethods = styled.h3`
@@ -120,8 +129,9 @@ justify-content:center;
 align-items: center;
 font-weight: bold;
 overflow-y: auto;
+transition: 1s ease;
 :hover p{
-  border: 2px solid #ff5252;
+  padding: 2px;
   background-color: #ff5252;
   border-radius: 8px;
   cursor: pointer;
@@ -163,7 +173,7 @@ user-select: none;
 width:fit-content;
 white-space: nowrap;
 cursor: pointer;
+transition: .2s ease;
 :hover{
   background-color: #ff5252;
-  transition: .15s ease;
 }`

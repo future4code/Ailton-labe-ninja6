@@ -10,6 +10,8 @@ import {
   MethodsDiv,
   ValueAndDate,
   InfosDiv,
+  AddedDiv,
+  AddDiv,
 } from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 import CartPreto from "../img/iconcartpreto.png";
@@ -21,8 +23,8 @@ const demoauth = {
 
 export default class JobDetails extends React.Component {
   state = {
-    loading: true,
     jobInfos: {},
+    loading: true,
   };
 
   componentDidMount() {
@@ -34,15 +36,18 @@ export default class JobDetails extends React.Component {
     axios
       .get(url, demoauth)
       .then((res) => {
-        console.log(this.state.jobInfos);
         this.setState({ jobInfos: res.data, loading: false });
+        this.isInCart()
       })
       .catch((error) => {
-        alert("nosso server foi di beisi", error);
+        console.log(error);
       });
   };
 
   render() {
+    const filterId = this.props.carrinho?.some((data) => {
+      return data.id === this.props.id
+    });
     const paymentMethods = this.state.jobInfos.paymentMethods?.map(
       (dados, index) => {
         return <MethodsCard key={index}>{dados.toUpperCase()}</MethodsCard>;
@@ -51,52 +56,61 @@ export default class JobDetails extends React.Component {
     return (
       <Containerzudo>
         <Container>
-          {this.state.loading ? <LoadingScreen/> :
-          <>
-          <h1>{this.state.jobInfos.title?.toUpperCase()}</h1>
-          <Description>{this.state.jobInfos.description}</Description>
-          <PaymentDiv>
-            Métodos de pagamento
-            <MethodsDiv>{paymentMethods}</MethodsDiv>
-          </PaymentDiv>
-          <ValueAndDate>
-            <InfosDiv>
-              <p>Valor Total</p>
-              <h2>${this.state.jobInfos.price} </h2>
-            </InfosDiv>
+          {this.state.loading ? (
+            <LoadingScreen />
+          ) : (
+            <>
+              <h1>{this.state.jobInfos.title?.toUpperCase()}</h1>
+              <Description>{this.state.jobInfos.description}</Description>
+              <PaymentDiv>
+                Métodos de pagamento
+                <MethodsDiv>{paymentMethods}</MethodsDiv>
+              </PaymentDiv>
+              <ValueAndDate>
+                <InfosDiv>
+                  <p>Valor Total</p>
+                  <h2>${this.state.jobInfos.price} </h2>
+                </InfosDiv>
 
-            <InfosDiv>
-              <p>Data de expiração</p>
-              <h2>
-                {`${this.state.jobInfos.dueDate?.slice(
-                  8,
-                  10
-                )}/${this.state.jobInfos.dueDate?.slice(
-                  5,
-                  7
-                )}/${this.state.jobInfos.dueDate?.slice(0, 4)}`}
-              </h2>
-            </InfosDiv>
-          </ValueAndDate>
-          <BackDetails>
-            <div
-            onClick={() =>
-              this.props.addServices(
-                this.state.jobInfos.id,
-                this.state.jobInfos.title,
-                this.props.jobs
-              )
-            }>
-              <p>Adicionar ao Carrinho</p>
-              <img               
-                src={CartPreto}
-              />
-            </div>
-            <p onClick={()=>this.props.deleteJob(this.state.jobInfos.id)}>Excluir serviço</p>
-            <p onClick={this.props.closePopUp}>Voltar</p>
-          </BackDetails>
-          </>
-          }          
+                <InfosDiv>
+                  <p>Data de expiração</p>
+                  <h2>
+                    {`${this.state.jobInfos.dueDate?.slice(
+                      8,
+                      10
+                    )}/${this.state.jobInfos.dueDate?.slice(
+                      5,
+                      7
+                    )}/${this.state.jobInfos.dueDate?.slice(0, 4)}`}
+                  </h2>
+                </InfosDiv>
+              </ValueAndDate>
+              <BackDetails>
+                {filterId ? (
+                  <AddedDiv>
+                    <p>Item adicionado ao carrinho</p>
+                  </AddedDiv>
+                ) : (
+                  <AddDiv
+                    onClick={() =>
+                      this.props.addServices(
+                        this.state.jobInfos.id,
+                        this.state.jobInfos.title,
+                        this.props.jobs,
+                        )
+                    }
+                  >
+                    <p>Adicionar ao Carrinho</p>
+                    <img src={CartPreto} />
+                  </AddDiv>
+                )}
+                <p onClick={() => this.props.deleteJob(this.state.jobInfos.id)}>
+                  Excluir serviço
+                </p>
+                <p onClick={this.props.closePopUp}>Voltar</p>
+              </BackDetails>
+            </>
+          )}
         </Container>
       </Containerzudo>
     );
