@@ -2,36 +2,61 @@ import React from 'react'
 import {
   JobCard,
   PayMethods,
-  Biricutico,
+  RemoveBt,
   Title,
   CartPage,
-  BigCart } from './styled'
-
+  BigCart,
+  DivCart,
+  EndDiv,
+  DivDescription,
+  DivDate,
+  DivPrice,
+  T} from './styled'
+import Semurai from "../img/semuray.png"
 
 export default class ShopCart extends React.Component {
-  onClickFinalCart=()=>{
-    return alert("Compra finalizada com sucesso")
+  onClickFinalCart = () => {
+    return alert("Compra finalizada com sucesso!")
   }
+  
   render() {
-    const cartItens = this.props.carrinho.map((data)=>{
+    const somaPrecos = this.props.carrinho
+    .map((item) => item.price)
+    .reduce((prev, curr) => prev + curr, 0);
+    const cartItens = this.props.carrinho.map((data) => {
       return (
         <JobCard key={data.id}>
-        <Title>{data.title.toUpperCase()}</Title>
-        {/* <h2>{data.description}</h2> */}
-        <h3>{`$${data.price} Pila`}</h3>
-        <div>{data.paymentMethods.map((item)=>{return(<PayMethods>{item.toUpperCase()}</PayMethods>)})}</div>
-        <p>{`Data de expiração:
-         ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p>
-        <Biricutico onClick={() => this.props.removeService(data.id)}>Remover Serviço </Biricutico>
-      </JobCard>
+          <Title>{data.title.toUpperCase()}</Title>
+          <DivDescription>{data.description}</DivDescription>
+          <DivCart>{data.paymentMethods.map((item) => { return (<PayMethods>{item.toUpperCase()}</PayMethods>) })}</DivCart>
+          <DivPrice> <h3>{`$${data.price} Pila`}</h3></DivPrice><DivDate><p>{`Data de expiração:
+         ${data.dueDate.slice(8, 10)}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(2, 4)}`}</p></DivDate>
+          <RemoveBt onClick={() => this.props.removeService(data.id)}>Remover Serviço </RemoveBt>
+        </JobCard>
       )
     })
     return (
-      <CartPage>
-      <h1>SHOP CART </h1>
-      <BigCart>{cartItens}</BigCart>
-      <button onClick={this.onClickFinalCart} >Finalizar Compra</button>
-      </CartPage>
+      <T>
+        <h1>SHOP CART </h1>
+        <CartPage>
+          <BigCart>{cartItens}</BigCart>
+          <div>
+          <EndDiv>
+            <div>
+            <p>Quantidade:{this.props.carrinho.length}</p>
+            <p>Total:{somaPrecos}</p>
+            </div>
+            
+            
+            <button onClick={this.onClickFinalCart}>Finalizar Compra</button>
+            </EndDiv>
+            <br/>
+          <img src={Semurai}/>
+          </div>
+          
+        </CartPage>
+      </T>
+
     )
   }
 }
