@@ -57,8 +57,7 @@ export default class JobRegister extends React.Component {
   render() {
     return (
       <Container>
-        <ContainerGeral>
-        
+        <ContainerGeral>        
         <ContainerRegisterGeral>
           <TitleRegister>Torne-se um Samurai</TitleRegister>
           <MethodsContainer>
