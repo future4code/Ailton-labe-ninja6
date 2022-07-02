@@ -1,12 +1,5 @@
 import React from "react";
-import { Container } from "./styled";
-import { ContainerDev } from "./styled";
-import { ContainerMenu } from "./styled";
-import { ContainerMedia } from "./styled";
-import { ContainerLogo } from "./styled";
-import { Devs } from "./styled";
-import { DevsMedia } from "./styled";
-import { DevsLine } from "./styled";
+import { Container,ContainerDev, ContainerMenu,ContainerMedia,ContainerLogo,FooterPoint, FooterPointM, FooterPointL, Devs, DevsLine,DevsMedia } from "./styled";
 import LogoFooter from "../img/samuraifooter.png";
 import Github from "../img/logogithub.png";
 import Linkedin from "../img/logolinkedin.png";
@@ -23,12 +16,12 @@ export default class styled extends React.Component {
           <img src={LogoFooter} />
         </ContainerLogo>
         <ContainerMenu>
-          <p>-Sobre nós</p>
-          <p>-Fale conosco</p>
-          <p>-Dúvidas frequentes</p>
-          <p>-Nosso App</p>
-          <p>-Não sei mais</p>
-          <p>-Não sei mais 2</p>
+          <FooterPoint>-Sobre nós</FooterPoint>
+          <FooterPoint>-Fale conosco</FooterPoint>
+          <FooterPointL>-Dúvidas frequentes - FAQ</FooterPointL>
+          <FooterPointM>-Trabalhe conosco</FooterPointM>
+          <FooterPoint>-Nosso App</FooterPoint>
+          <FooterPointM>-Termos de serviço</FooterPointM>
         </ContainerMenu>
         <ContainerDev>
           <p>Desenvolvedores:</p>

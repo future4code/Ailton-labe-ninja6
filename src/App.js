@@ -54,8 +54,9 @@ export default class App extends React.Component {
       case "shopCart":
         return (
           <ShopCart
-            carrinho={this.state.carrinho}
+            addServices={this.addServices}
             removeService={this.removeService}
+            carrinho={this.state.carrinho}
           />
         );
     }

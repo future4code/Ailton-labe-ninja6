@@ -1,4 +1,9 @@
 import React from "react";
+import { FooterCart, BuyButton } from "../JobList/styled";
+import JobDetails from "../JobDetails/JobDetails";
+import axios from "axios";
+import { TitleBig } from "./styled";
+
 import {
   JobCard,
   PayMethods,
@@ -12,14 +17,37 @@ import {
   DivDate,
   DivPrice,
   T,
+  BigTitle,
 } from "./styled";
 import Semurai from "../img/semuray.png";
 
+const demoauth = {
+  headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
+};
+
 export default class ShopCart extends React.Component {
+  state={
+    jobs: [],
+    details: false,
+    clickedService: "",
+  }
   onClickFinalCart = () => {
     return alert("Compra finalizada com sucesso!");
   };
-
+  getActualId = (id) => {
+    this.setState({ clickedService: id });
+    this.setState({ details: true });
+  };
+  closePopUp = () => {
+    this.setState({ details: false });
+  };
+  deleteJob = (id) => {
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
+    axios.get(url, demoauth).then((res)=>{
+      console.log(res)
+      alert('Serviço deletado')      
+    }).catch(res=>{alert('Nosso servidor foi de berço')})
+  }
   render() {
     const somaPrecos = this.props.carrinho
       .map((item) => item.price)
@@ -27,8 +55,12 @@ export default class ShopCart extends React.Component {
     const cartItens = this.props.carrinho.map((data) => {
       return (
         <JobCard key={data.id}>
-          <Title>{data.title.toUpperCase()}</Title>
-          <DivDescription>{data.description}</DivDescription>
+          <Title>
+            <p>{data.title.toUpperCase()}</p>
+          </Title>
+          <DivDescription>
+            <p onClick={() => this.getActualId(data.id)}>Ver detalhes</p>
+          </DivDescription>
           <DivCart>
             {data.paymentMethods.map((item) => {
               return <PayMethods>{item.toUpperCase()}</PayMethods>;
@@ -53,21 +85,32 @@ export default class ShopCart extends React.Component {
     });
     return (
       <T>
-        <h1>SHOP CART </h1>
+        {this.state.details && (
+            <JobDetails
+              jobs={this.state.jobs}
+              addServices={this.props.addServices}
+              closePopUp={this.closePopUp}
+              id={this.state.clickedService}
+              deleteJob={this.deleteJob}
+            />
+          )}
+        <TitleBig>SHOP CART </TitleBig>
         <CartPage>
-          <BigCart>{cartItens}</BigCart>
-          <div>
-            <EndDiv>
-              <div>
-                <p>Quantidade:{this.props.carrinho.length}</p>
-                <p>Total:{somaPrecos}</p>
-              </div>
-
-              <button onClick={this.onClickFinalCart}>Finalizar Compra</button>
+          <BigCart>
+            {cartItens}
+          </BigCart>
+        <di>
+          <EndDiv>
+            <h1>Quantidade: {this.props.carrinho.length}
+            </h1>
+            <FooterCart>
+              <h4>Valor Total: {somaPrecos}</h4>
+              <BuyButton onClick={this.onClickFinalCart}>Finalizar Compra</BuyButton>
+            </FooterCart>
             </EndDiv>
             <br />
             <img src={Semurai} />
-          </div>
+        </di>
         </CartPage>
       </T>
     );

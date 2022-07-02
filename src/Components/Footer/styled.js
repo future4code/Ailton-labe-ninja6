@@ -25,10 +25,30 @@ justify-content: center;
 align-items: left;
 gap: 10px;
 flex-direction: column;
-p {
-    cursor: pointer;
-    font-size: 1.1rem;
-}
+`
+export const FooterPoint = styled.p`
+cursor: pointer;
+font-size: 1.1rem;
+width: 30%;
+:hover {
+    border-bottom: 1px solid #ff5252 ;
+} 
+`
+export const FooterPointM = styled.p`
+cursor: pointer;
+font-size: 1.1rem;
+width: 40%;
+:hover {
+    border-bottom: 1px solid #ff5252 ;
+} 
+`
+export const FooterPointL = styled.p`
+cursor: pointer;
+font-size: 1.1rem;
+width: 55%;
+:hover {
+    border-bottom: 1px solid #ff5252 ;
+} 
 `
 export const ContainerDev = styled.div `
 width: 20%;
