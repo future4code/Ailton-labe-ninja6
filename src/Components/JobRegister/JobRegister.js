@@ -8,6 +8,7 @@ import { TitleRegister } from "./styled";
 import { ButtonRegister } from "./styled";
 import { ContainerRegisterGeral } from "./styled";
 import { ContainerSamuraizudo } from "./styled";
+import { ContainerGeral } from "./styled";
 import Samuraizudo2 from "../img/samuraizudo2.jpg"
 
 export default class JobRegister extends React.Component {
@@ -56,6 +57,8 @@ export default class JobRegister extends React.Component {
   render() {
     return (
       <Container>
+        <ContainerGeral>
+        
         <ContainerRegisterGeral>
           <TitleRegister>Torne-se um Samurai</TitleRegister>
           <MethodsContainer>
@@ -128,8 +131,9 @@ export default class JobRegister extends React.Component {
           >
             Cadastre seu Serviço
           </ButtonRegister>
+          </ContainerRegisterGeral>
           <ContainerSamuraizudo><img src = {Samuraizudo2}></img></ContainerSamuraizudo>
-        </ContainerRegisterGeral>
+        </ContainerGeral>
       </Container>
     );
   }

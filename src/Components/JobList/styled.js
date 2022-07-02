@@ -33,10 +33,11 @@ export const JobCard = styled.div`
   background-color: #303030;
   color: white;
   top: 0;
+  transition: .3s ;
   :hover {
     width: 42%;
     height: 160px;
-    transition: .3s ease;
+    
   }
   h1 {
     color: #ff5252;

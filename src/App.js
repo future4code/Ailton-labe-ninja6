@@ -4,6 +4,7 @@ import JobRegister from "./Components/JobRegister/JobRegister";
 import JobList from "./Components/JobList/JobList";
 import ShopCart from "./Components/ShopCart/ShopCart";
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 export default class App extends React.Component {
   state = {
@@ -69,6 +70,7 @@ export default class App extends React.Component {
       <div>
         <Header changeScreen={this.goTo} />
         {this.changeScreen()}
+        <Footer></Footer>
       </div>
     );
   }
