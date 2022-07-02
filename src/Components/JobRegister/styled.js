@@ -66,5 +66,14 @@ align-items: center;
 flex-direction: column;
 `
 export const ContainerSamuraizudo = styled.div`
-margin-top: 30px;
+/* margin-top: 30px; */
+width: 16%;
+`
+export const ContainerGeral = styled.div `
+display: flex;
+width: 100%;
+justify-content: center;
+gap: 300px;
+align-items: center;
+padding-top: 100px;
 `
