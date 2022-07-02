@@ -92,9 +92,10 @@ export default class ShopCart extends React.Component {
               closePopUp={this.closePopUp}
               id={this.state.clickedService}
               deleteJob={this.deleteJob}
+              carrinho={this.props.carrinho}
             />
           )}
-        <TitleBig>SHOP CART </TitleBig>
+        <TitleBig>Carrinho</TitleBig>
         <CartPage>
           <BigCart>
             {cartItens}

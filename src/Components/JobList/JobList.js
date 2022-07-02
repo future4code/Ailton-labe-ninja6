@@ -16,11 +16,13 @@ import {
   FilterTypeSelect,
   FilterAndSamuraizudo,
   BuyButton,
+  ClickedItem,
+  ViewDetailsP,
 } from "./styled";
 import Cart from "../img/iconcart.png";
 import JobDetails from "../JobDetails/JobDetails";
 import lixo from "../img/latadelixo.png";
-import Samuraizudo from "../img/samuraizudo.webp"
+import Samuraizudo from "../img/samuraizudo.webp";
 import LoadingScreen from "../Loading Screen/LoadingScreen";
 
 const demoauth = {
@@ -43,7 +45,7 @@ export default class JobList extends React.Component {
   componentDidMount() {
     this.getAllJobs();
   }
-  
+
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
     axios
@@ -57,12 +59,17 @@ export default class JobList extends React.Component {
   };
 
   deleteJob = (id) => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-    axios.get(url, demoauth).then((res)=>{
-      console.log(res)
-      alert('Serviço deletado')      
-    }).catch(res=>{alert('Nosso servidor foi de berço')})
-  }
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    axios
+      .get(url, demoauth)
+      .then((res) => {
+        // console.log(res);
+        alert("Serviço deletado");
+      })
+      .catch((res) => {
+        alert("Nosso servidor foi de berço");
+      });
+  };
 
   getActualId = (id) => {
     this.setState({ clickedService: id });
@@ -93,7 +100,115 @@ export default class JobList extends React.Component {
     this.setState({ order: e.target.value });
   };
 
+  teste = () => {
+    const JobIds = this.state.jobs.map((data) => {
+      return data.id;
+    });
+    const cartIds = this.props.carrinho.map((data) => {
+      return data.id;
+    });
+    // console.log(JobIds, cartIds);
+  };
+
   render() {
+    const added = this.state.jobs
+      .filter((job) => {        
+        return (
+          job.title
+            .toLowerCase()
+            .includes(this.state.query.toLowerCase()) || // Avisar o Daniel!!!
+          job.description
+            .toLowerCase()
+            .includes(this.state.query.toLowerCase())
+        );
+      })
+      .filter((job) => {
+        return (
+          this.state.minPrice === "" ||
+          job.price >= this.state.minPrice
+        );
+      })
+      .filter((job) => {
+        return (
+          this.state.maxPrice === "" ||
+          job.price <= this.state.maxPrice
+        );
+      })
+      .sort((currentJob, nextJob) => {
+        switch (this.state.sortingParameter) {
+          case "title":
+            return (
+              this.state.order *
+              currentJob.title.localeCompare(nextJob.title)
+            );
+          case "dueDate":
+            return (
+              this.state.order *
+              (new Date(currentJob.dueDate).getTime() -
+                new Date(nextJob.dueDate).getTime())
+            );
+          default:
+            return (
+              this.state.order * (currentJob.price - nextJob.price)
+            );
+        }
+      })
+      .map((data) => {        
+        const isInCart = this.props.carrinho.some((dataCart) => {
+          console.log('a')
+          return data === dataCart;
+        });                  
+        if (isInCart) {
+          return (
+            <JobCard key={data.id}>
+              <h1>{data.title.toUpperCase()}</h1>
+              <h3>{`$${data.price}`}</h3>
+              <p>{`Data de expiração: ${data.dueDate.slice(
+                8,
+                10
+              )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
+                2,
+                4
+              )}`}</p>
+              <DetailsDiv>
+                <ViewDetailsP onClick={() => this.getActualId(data.id)}>
+                  Ver Detalhes
+                </ViewDetailsP>
+                <ClickedItem>Item adicionado ao carrinho</ClickedItem>                          
+              </DetailsDiv>
+            </JobCard>
+          );
+        } else {
+          return (
+            <JobCard key={data.id}>
+              <h1>{data.title.toUpperCase()}</h1>
+              <h3>{`$${data.price}`}</h3>
+              <p>{`Data de expiração: ${data.dueDate.slice(
+                8,
+                10
+              )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
+                2,
+                4
+              )}`}</p>
+              <DetailsDiv>
+                <ViewDetailsP onClick={() => this.getActualId(data.id)}>
+                  Ver Detalhes
+                </ViewDetailsP>
+                <img
+                  onClick={() =>
+                    this.props.addServices(
+                      data.id,
+                      data.title,
+                      this.state.jobs
+                    )
+                  }
+                  src={Cart}
+                />
+              </DetailsDiv>
+            </JobCard>
+          );
+        }
+      })
 
     const cartAdd = this.props.carrinho.map((dados) => {
       return (
@@ -103,11 +218,9 @@ export default class JobList extends React.Component {
             <p>${dados.price}</p>
           </NameAndPrice>
           <img src={lixo} onClick={() => this.props.removeService(dados.id)} />
-      
         </CartCard>
       );
     });
-
     const somaPrecos = this.props.carrinho
       .map((item) => item.price)
       .reduce((prev, curr) => prev + curr, 0);
@@ -121,149 +234,80 @@ export default class JobList extends React.Component {
               closePopUp={this.closePopUp}
               id={this.state.clickedService}
               deleteJob={this.deleteJob}
+              carrinho={this.props.carrinho}
             />
           )}
           <ServiceTitle>Serviços disponíveis</ServiceTitle>
           <PageCenter>
-
             <FilterAndSamuraizudo>
-            <Filter>
-              <h2>FILTROS</h2>
-              <span>
-                <input
-                  type="text"
-                  placeholder="Pesquisa"
-                  value={this.state.query}
-                  onChange={this.handleInputQuery}
-                />
-              </span>
+              <Filter>
+                <h2>FILTROS</h2>
+                <span>
+                  <input
+                    type="text"
+                    placeholder="Pesquisa"
+                    value={this.state.query}
+                    onChange={this.handleInputQuery}
+                  />
+                </span>
 
-              <span>
-                <input
-                  type="number"
-                  placeholder="Preço Mínimo"
-                  value={this.state.minPrice}
-                  onChange={this.handleInputMinPrice}
-                />
-              </span>
+                <span>
+                  <input
+                    type="number"
+                    placeholder="Preço Mínimo"
+                    value={this.state.minPrice}
+                    onChange={this.handleInputMinPrice}
+                  />
+                </span>
 
-              <span>
-                <input
-                  type="number"
-                  placeholder="Preço Máximo"
-                  value={this.state.maxPrice}
-                  onChange={this.handleInputMaxPrice}
-                />
-              </span>
+                <span>
+                  <input
+                    type="number"
+                    placeholder="Preço Máximo"
+                    value={this.state.maxPrice}
+                    onChange={this.handleInputMaxPrice}
+                  />
+                </span>
 
-              <FilterTypeSelect>
-                <label> Filtro: </label>
-                <select
-                  name="sort"
-                  value={this.state.sortingParameter}
-                  onChange={this.handleInputSortingParameter}
-                >
-                  <option value="title"> Título </option>
-                  <option value="price"> Preço </option>
-                  <option value="dueDate"> Prazo </option>
-                </select>
-              </FilterTypeSelect>
+                <FilterTypeSelect>
+                  <label> Filtro: </label>
+                  <select
+                    name="sort"
+                    value={this.state.sortingParameter}
+                    onChange={this.handleInputSortingParameter}
+                  >
+                    <option value="title"> Título </option>
+                    <option value="price"> Preço </option>
+                    <option value="dueDate"> Prazo </option>
+                  </select>
+                </FilterTypeSelect>
 
-              <div>
-                <label> Ordenação: </label>
-                <select
-                  name="order"
-                  value={this.state.order}
-                  onChange={this.handleInputOrder}
-                >
-                  <option value={1}> Crescente </option>
-                  <option value={-1}> Decrescente </option>
-                </select>
-              </div>
-            </Filter>
-            <img src={Samuraizudo}/>
+                <div>
+                  <label> Ordenação: </label>
+                  <select
+                    name="order"
+                    value={this.state.order}
+                    onChange={this.handleInputOrder}
+                  >
+                    <option value={1}> Crescente </option>
+                    <option value={-1}> Decrescente </option>
+                  </select>
+                </div>
+              </Filter>
+              <img src={Samuraizudo} />
             </FilterAndSamuraizudo>
 
             <ContainerMid>
-              {this.state.loading && <LoadingScreen/>}            
-              {this.state.jobs
-                .filter((job) => {
-                  return (
-                    job.title
-                      .toLowerCase()
-                      .includes(this.state.query.toLowerCase()) || // Avisar o Daniel!!!
-                    job.description
-                      .toLowerCase()
-                      .includes(this.state.query.toLowerCase())
-                  );
-                })
-                .filter((job) => {
-                  return (
-                    this.state.minPrice === "" ||
-                    job.price >= this.state.minPrice
-                  );
-                })
-                .filter((job) => {
-                  return (
-                    this.state.maxPrice === "" ||
-                    job.price <= this.state.maxPrice
-                  );
-                })
-                .sort((currentJob, nextJob) => {
-                  switch (this.state.sortingParameter) {
-                    case "title":
-                      return (
-                        this.state.order *
-                        currentJob.title.localeCompare(nextJob.title)
-                      );
-                    case "dueDate":
-                      return (
-                        this.state.order *
-                        (new Date(currentJob.dueDate).getTime() -
-                          new Date(nextJob.dueDate).getTime())
-                      );
-                    default:
-                      return (
-                        this.state.order * (currentJob.price - nextJob.price)
-                      );
-                  }
-                })
-                .map((data) => {
-                  return (
-                    <JobCard key={data.id}>
-                      <h1>{data.title.toUpperCase()}</h1>
-                      <h3>{`$${data.price}`}</h3>
-                      <p>{`Data de expiração: ${data.dueDate.slice(
-                        8,
-                        10
-                      )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
-                        2,
-                        4
-                      )}`}</p>
-                      <DetailsDiv>
-                        <p onClick={() => this.getActualId(data.id)}>
-                          Ver Detalhes
-                        </p>
-                        <img
-                          onClick={() =>
-                            this.props.addServices(
-                              data.id,
-                              data.title,
-                              this.state.jobs
-                            )
-                          }
-                          src={Cart}
-                        />
-                      </DetailsDiv>
-                    </JobCard>
-                  );
-                })}
+              {this.state.loading && <LoadingScreen />}
+              {added}
             </ContainerMid>
             <MediumCart>
               <h1>CARRINHO</h1>
-              {this.props.carrinho.length >= 1 ? 
-              <ServiceCart>{cartAdd}</ServiceCart>
-              : <p>Adicione um item ao carrinho</p> }
+              {this.props.carrinho.length >= 1 ? (
+                <ServiceCart>{cartAdd}</ServiceCart>
+              ) : (
+                <p>Adicione um item ao carrinho</p>
+              )}
               <FooterCart>
                 <h4 onClick={this.testaBool}>Valor total: ${somaPrecos}</h4>
                 <BuyButton onClick={() => this.props.goTo("shopCart")}>

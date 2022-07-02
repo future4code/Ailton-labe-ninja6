@@ -19,7 +19,7 @@ img {
 `
 export const ContainerMenu = styled.div `
 width: 20%;
-color: white;
+color: #BBBBBB;
 display: flex;
 justify-content: center;
 align-items: left;
@@ -29,25 +29,11 @@ flex-direction: column;
 export const FooterPoint = styled.p`
 cursor: pointer;
 font-size: 1.1rem;
-width: 30%;
+width: fit-content;
+transition: .2s ease;
 :hover {
-    border-bottom: 1px solid #ff5252 ;
-} 
-`
-export const FooterPointM = styled.p`
-cursor: pointer;
-font-size: 1.1rem;
-width: 40%;
-:hover {
-    border-bottom: 1px solid #ff5252 ;
-} 
-`
-export const FooterPointL = styled.p`
-cursor: pointer;
-font-size: 1.1rem;
-width: 55%;
-:hover {
-    border-bottom: 1px solid #ff5252 ;
+    color: #ff5252;
+    /* border-bottom: 1px solid #ff5252 ; */
 } 
 `
 export const ContainerDev = styled.div `
