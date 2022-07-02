@@ -6,7 +6,7 @@ export default class LandPage extends React.Component {
     return (
       <>
       <Container>
-        <p>LandPage</p>
+        <p></p>
       </Container>
       </>
     )

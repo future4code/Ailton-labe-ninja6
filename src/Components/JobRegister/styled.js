@@ -67,7 +67,9 @@ flex-direction: column;
 `
 export const ContainerSamuraizudo = styled.div`
 /* margin-top: 30px; */
-width: 16%;
+>img{
+    width: 400px;
+}
 `
 export const ContainerGeral = styled.div `
 display: flex;

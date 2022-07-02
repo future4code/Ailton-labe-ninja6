@@ -8,7 +8,7 @@ import Footer from "./Components/Footer/Footer";
 
 export default class App extends React.Component {
   state = {
-    actualScreen: "jobRegister",
+    actualScreen: "landpage",
     carrinho: [],
   };
   addServices = (info, name, jobs) => {
