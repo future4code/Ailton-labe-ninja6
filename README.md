@@ -1,6 +1,6 @@
 <h1> Readme </h1>
 
-[Link Srge](https://incandescent-neck.surge.sh/)
+<a href="https://incandescent-neck.surge.sh/" target="_blank">Link Surge</a>
 
 ## Projeto em grupo Samuralab (Labeninjas)
 ![Logo](src/Components/img/minisamuralab.png)
