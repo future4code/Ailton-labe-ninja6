@@ -13,6 +13,7 @@ import {
 } from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 import CartPreto from "../img/iconcartpreto.png";
+import LoadingScreen from "../Loading Screen/LoadingScreen";
 
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
@@ -20,6 +21,7 @@ const demoauth = {
 
 export default class JobDetails extends React.Component {
   state = {
+    loading: true,
     jobInfos: {},
   };
 
@@ -29,12 +31,11 @@ export default class JobDetails extends React.Component {
 
   getJobById = () => {
     const url = `https://labeninjas.herokuapp.com/jobs/${this.props.id}`;
-
     axios
       .get(url, demoauth)
       .then((res) => {
         console.log(this.state.jobInfos);
-        this.setState({ jobInfos: res.data });
+        this.setState({ jobInfos: res.data, loading: false });
       })
       .catch((error) => {
         alert("nosso server foi di beisi", error);
@@ -50,6 +51,8 @@ export default class JobDetails extends React.Component {
     return (
       <Containerzudo>
         <Container>
+          {this.state.loading ? <LoadingScreen/> :
+          <>
           <h1>{this.state.jobInfos.title?.toUpperCase()}</h1>
           <Description>{this.state.jobInfos.description}</Description>
           <PaymentDiv>
@@ -92,6 +95,8 @@ export default class JobDetails extends React.Component {
             <p onClick={()=>this.props.deleteJob(this.state.jobInfos.id)}>Excluir serviço</p>
             <p onClick={this.props.closePopUp}>Voltar</p>
           </BackDetails>
+          </>
+          }          
         </Container>
       </Containerzudo>
     );

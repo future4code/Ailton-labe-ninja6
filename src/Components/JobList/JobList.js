@@ -21,6 +21,7 @@ import Cart from "../img/iconcart.png";
 import JobDetails from "../JobDetails/JobDetails";
 import lixo from "../img/latadelixo.png";
 import Samuraizudo from "../img/samuraizudo.webp"
+import LoadingScreen from "../Loading Screen/LoadingScreen";
 
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
@@ -36,6 +37,7 @@ export default class JobList extends React.Component {
     order: 1,
     details: false,
     clickedService: "",
+    loading: true,
   };
 
   componentDidMount() {
@@ -47,7 +49,7 @@ export default class JobList extends React.Component {
     axios
       .get(url, demoauth)
       .then((res) => {
-        this.setState({ jobs: res.data.jobs });
+        this.setState({ jobs: res.data.jobs, loading: false });
       })
       .catch((err) => {
         console.log(err);
@@ -183,6 +185,7 @@ export default class JobList extends React.Component {
             </FilterAndSamuraizudo>
 
             <ContainerMid>
+              {this.state.loading && <LoadingScreen/>}            
               {this.state.jobs
                 .filter((job) => {
                   return (
