@@ -11,11 +11,26 @@ import { InputStyle } from "./styled";
 import { ContainerLoginAndCart } from "./styled";
 import { ContainerImg } from "./styled";
 import IconSamurai from "../img/iconsamurai.png";
+import MinCart from "../MinCart/MinCart";
 
 export default class Header extends React.Component {
+  state={
+    minCart:false,
+  }
+  goToMinCart=()=>{
+    console.log("foi")
+    this.setState({minCart:!this.state.minCart})
+  }
   render() {
     return (
       <div>
+        {this.state.minCart && (
+            <MinCart
+            carrinho={this.props.carrinho}
+            removeService={this.props.removeService}
+            goTo={this.props.changeScreen}
+            />
+          )}
         <Container>
           <ContainerItensMenu>
             <ContainerImg>
@@ -23,12 +38,12 @@ export default class Header extends React.Component {
             </ContainerImg>
             <InputStyle placeholder="Buscar serviço" onChange={()=>this.props.changeScreen("jobList")}></InputStyle>
             <ContainerLoginAndCart>
-              <ContainerCartStyle>
+              <ContainerCartStyle onClick={this.goToMinCart}>
                 <img src={IconCart} />
                 <p>Carrinho</p>
               </ContainerCartStyle>
-              <ContainerCartStyle>
-                <img src={IconSamurai} />
+              <ContainerCartStyle >
+                <img  src={IconSamurai} />
                 <p>Login</p>
               </ContainerCartStyle>
             </ContainerLoginAndCart>

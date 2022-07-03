@@ -74,7 +74,10 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Header changeScreen={this.goTo} />
+        <Header 
+        removeService={this.removeService}
+        carrinho={this.state.carrinho}
+        changeScreen={this.goTo} />
         {this.changeScreen()}
         <Footer></Footer>
       </div>
