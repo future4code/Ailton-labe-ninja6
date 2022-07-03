@@ -106,6 +106,7 @@ gap: 4px;
 color: black;
 align-items: center;
 justify-content: center;
+cursor: pointer;
 p{
     font-size:.8rem
 }

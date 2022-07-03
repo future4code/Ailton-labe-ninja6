@@ -44,7 +44,7 @@ export default class App extends React.Component {
   changeScreen = () => {
     switch (this.state.actualScreen) {
       case "landpage":
-        return <LandPage />;
+        return <LandPage changeScreen={this.goTo}/>;
       case "jobRegister":
         return <JobRegister />;
       case "jobList":
