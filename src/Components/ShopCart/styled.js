@@ -101,12 +101,12 @@ transition: .2s ease;
 }
 `
 export const PayMethods = styled.h3`
-background-color: orange;
+background-color: #ffd700;
 font-size: 0.8rem;
 white-space: nowrap;
-border: 2px solid black;
-border-radius: 20px;
-padding: 5px;
+border-radius: 12px;
+padding: 4px;
+color:#000
 `
 export const DivCart = styled.div`
 /* background-color: grey; */

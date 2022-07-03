@@ -133,15 +133,21 @@ export const MediumCart = styled.aside`
 `;
 export const CartCard = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  gap: 44px;
   padding: 4px 12px;
   align-items: center;
+  gap:2px;
   box-shadow: 2px 2px #ff5252;
   background-color: #fff;
   color: black;
+  p{
+    width: 45%;
+    padding: 0 2px;
+   
+  }
   > img {
-    width: 28px;
+    width: 26px;
   }
 `;
 export const ServiceCart = styled.div`
@@ -150,6 +156,16 @@ export const ServiceCart = styled.div`
   gap: 8px;
   overflow: auto;
   height: 80%;
+  padding: 4px 12px;
+  ::-webkit-scrollbar {
+    background-color: #303030;
+    width: 8px;
+    border-radius: 12px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #ff5252;
+    border-radius: 12px;
+  }
 `;
 export const FooterCart = styled.div`
   display: flex;
@@ -167,7 +183,6 @@ export const NameAndPrice = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  /* background-color: lime; */
 `;
 
 export const FilterTypeSelect = styled.div`
