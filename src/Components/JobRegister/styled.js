@@ -2,10 +2,47 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 display: flex;
-flex-direction: column;
-align-items: center;
+@media only screen and (max-width: 420px) {
+    width: 100%;
+    align-items: center;
+}
+`
+export const ContainerGeral = styled.div `
+display: flex;
 width: 100%;
-height: fit-content;
+justify-content: space-evenly;
+height: fit-content; 
+align-items: center;
+/* padding: 64px; */
+/* border: 2px solid red; */
+@media only screen and (max-width: 420px) {
+    width: fit-content;
+    font-size: .8rem;
+    flex-direction: column;
+    padding:26px;
+    align-items: stretch;
+}
+`
+export const ContainerRegisterGeral = styled.div `
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+`
+export const ButtonRegister = styled.button `
+margin-top: 20px;
+width: 150px;
+height: 30px;
+border-radius: 5px;
+border: 2px solid #ff5252;
+color: white;
+background-color: #303030;
+cursor: pointer;
+transition: 0.2s;
+:hover{
+    background-color: #ff5252;
+    border: 2px solid #303030;
+}
 `
 
 export const MethodsContainer = styled.div`
@@ -26,7 +63,7 @@ export const CheckboxContainer = styled.div`
 display: flex;
 flex-direction: column;
 border: 1px solid black;
-height: 80px;
+/* height: 80px; */
 width: 100%;
 overflow: auto;
 padding: 3px 5px;
@@ -43,39 +80,13 @@ border: 1px solid black;
 export const TitleRegister = styled.h1 `
 margin-top: 20px;
 `
-export const ButtonRegister = styled.button `
-margin-top: 20px;
-width: 150px;
-height: 30px;
-border-radius: 5px;
-border: 2px solid #ff5252;
-color: white;
-background-color: #303030;
-cursor: pointer;
-transition: 0.2s;
-:hover{
-    background-color: #ff5252;
-    border: 2px solid #303030;
-}
-`
-export const ContainerRegisterGeral = styled.div `
-width: 25%;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-`
+
 export const ContainerSamuraizudo = styled.div`
 /* margin-top: 30px; */
 >img{
-    width: 400px;
+    width: 420px;
+    @media only screen and (max-width: 420px) {
+        width: 320px;
+    }
 }
-`
-export const ContainerGeral = styled.div `
-display: flex;
-width: 100%;
-justify-content: center;
-gap: 300px;
-align-items: center;
-padding: 64px;
 `

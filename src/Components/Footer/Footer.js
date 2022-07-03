@@ -49,8 +49,6 @@ export default class styled extends React.Component {
             <a href="https://github.com/gabthe" target={"_blank"}><img src={Github} /></a> <a href="https://www.linkedin.com/in/gabriel-theodoro-ferreira-680b1a18a/" target={"_blank"}><img src={Linkedin} /></a>
             </DevsMedia>
           </DevsLine>
-        </ContainerDev>
-        <ContainerDev>
           <DevsLine>
             <Devs>
               <p>Júlia Moniz</p>
