@@ -3,7 +3,7 @@
 <a href="https://incandescent-neck.surge.sh/" target="_blank">Link Surge</a>
 
 ## Projeto em grupo Samuralab (Labeninjas)
-![Logo](src/Components/img/minisamuralab.png)
+![Logo](src/Components/img/logoNoBg.png)
 # Sobre
 <p>O Samuralab é um site de contratação de serviços, inspirado no GetNinjas.</p>
 <br>
