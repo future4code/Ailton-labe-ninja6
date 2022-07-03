@@ -56,8 +56,9 @@ export default class JobRegister extends React.Component {
 
   render() {
     return (
-      <Container>
-        <ContainerGeral>        
+      // <Container>
+      // </Container>
+      <ContainerGeral>        
         <ContainerRegisterGeral>
           <TitleRegister>Torne-se um Samurai</TitleRegister>
           <MethodsContainer>
@@ -133,7 +134,6 @@ export default class JobRegister extends React.Component {
           </ContainerRegisterGeral>
           <ContainerSamuraizudo><img src = {Samuraizudo2}></img></ContainerSamuraizudo>
         </ContainerGeral>
-      </Container>
     );
   }
 }

@@ -7,6 +7,19 @@ background-color: black;
 display: flex;
 justify-content: space-around;
 align-items: center;
+border: 2px solid red;
+`
+export const ContainerItensMenu = styled.div `
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+color: white;
+align-items: center;
+border: 2px solid aqua;
+@media only screen and (max-width: 420px) {
+    width: 100%;
+    flex-direction: column;
+}
 `
 
 export const LogoStyle = styled.img `
@@ -87,14 +100,7 @@ padding: 8px;
 }
 `
 
-export const ContainerItensMenu = styled.div `
-width: 100%;
-display: flex;
-justify-content: space-around;
-color: white;
-align-items: center;
-/* gap: 100px; */
-`
+
 export const ContainerCartStyle = styled.div `
 background-color: white;
 height: 3vh;

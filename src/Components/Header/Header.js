@@ -31,11 +31,11 @@ export default class Header extends React.Component {
             goTo={this.props.changeScreen}
             />
           )}
-        <Container>
-          <ContainerItensMenu>
-            <ContainerImg>
+        <Container><ContainerImg>
               <LogoStyle src={Logo} />
             </ContainerImg>
+          <ContainerItensMenu>
+            
             <InputStyle placeholder="Buscar serviço" onChange={()=>this.props.changeScreen("jobList")}></InputStyle>
             <ContainerLoginAndCart>
               <ContainerCartStyle onClick={this.goToMinCart}>
