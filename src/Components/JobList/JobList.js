@@ -29,6 +29,8 @@ const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
 };
 
+const auth = {headers: {Authorization: "809503c1-0082-48d9-a9f3-7c1b054ffb8c"}} 
+
 export default class JobList extends React.Component {
   state = {
     jobs: [],
@@ -49,7 +51,7 @@ export default class JobList extends React.Component {
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
     axios
-      .get(url, demoauth)
+      .get(url, auth)
       .then((res) => {
         this.setState({ jobs: res.data.jobs, loading: false });
       })
@@ -61,10 +63,11 @@ export default class JobList extends React.Component {
   deleteJob = (id) => {
     const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
     axios
-      .get(url, demoauth)
+      .delete(url, auth)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         alert("Serviço deletado");
+        this.getAllJobs()
       })
       .catch((res) => {
         alert("Nosso servidor foi de berço");
@@ -111,106 +114,7 @@ export default class JobList extends React.Component {
   };
 
   render() {
-    const added = this.state.jobs
-      .filter((job) => {        
-        return (
-          job.title
-            .toLowerCase()
-            .includes(this.state.query.toLowerCase()) || // Avisar o Daniel!!!
-          job.description
-            .toLowerCase()
-            .includes(this.state.query.toLowerCase())
-        );
-      })
-      .filter((job) => {
-        return (
-          this.state.minPrice === "" ||
-          job.price >= this.state.minPrice
-        );
-      })
-      .filter((job) => {
-        return (
-          this.state.maxPrice === "" ||
-          job.price <= this.state.maxPrice
-        );
-      })
-      .sort((currentJob, nextJob) => {
-        switch (this.state.sortingParameter) {
-          case "title":
-            return (
-              this.state.order *
-              currentJob.title.localeCompare(nextJob.title)
-            );
-          case "dueDate":
-            return (
-              this.state.order *
-              (new Date(currentJob.dueDate).getTime() -
-                new Date(nextJob.dueDate).getTime())
-            );
-          default:
-            return (
-              this.state.order * (currentJob.price - nextJob.price)
-            );
-        }
-      })
-      .map((data) => {        
-        const isInCart = this.props.carrinho.some((dataCart) => {
-          console.log('a')
-          return data === dataCart;
-        });                  
-        if (isInCart) {
-          return (
-            <JobCard key={data.id}>
-              <h1>{data.title.toUpperCase()}</h1>
-              <h3>{`$${data.price}`}</h3>
-              <p>{`Data de expiração: ${data.dueDate.slice(
-                8,
-                10
-              )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
-                2,
-                4
-              )}`}</p>
-              <DetailsDiv>
-                <ViewDetailsP onClick={() => this.getActualId(data.id)}>
-                  Ver Detalhes
-                </ViewDetailsP>
-                <ClickedItem>Item adicionado ao carrinho</ClickedItem>                          
-              </DetailsDiv>
-            </JobCard>
-          );
-        } else {
-          return (
-            <JobCard key={data.id}>
-              <h1>{data.title.toUpperCase()}</h1>
-              <h3>{`$${data.price}`}</h3>
-              <p>{`Data de expiração: ${data.dueDate.slice(
-                8,
-                10
-              )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
-                2,
-                4
-              )}`}</p>
-              <DetailsDiv>
-                <ViewDetailsP onClick={() => this.getActualId(data.id)}>
-                  Ver Detalhes
-                </ViewDetailsP>
-                <img
-                  onClick={() =>
-                    this.props.addServices(
-                      data.id,
-                      data.title,
-                      this.state.jobs
-                    )
-                  }
-                  src={Cart}
-                />
-              </DetailsDiv>
-            </JobCard>
-          );
-        }
-      })
-
-    const cartAdd = this.props.carrinho.map((dados) => {
+    const cartAdd = this.props.carrinho?.map((dados) => {
       return (
         <CartCard key={dados.id}>
           <NameAndPrice>
@@ -299,7 +203,84 @@ export default class JobList extends React.Component {
 
             <ContainerMid>
               {this.state.loading && <LoadingScreen />}
-              {added}
+              {this.state.jobs.filter((job) => {
+                return (
+                  job.title
+                    .toLowerCase()
+                    .includes(this.state.query.toLowerCase()) || // Avisar o Daniel!!!
+                  job.description
+                    .toLowerCase()
+                    .includes(this.state.query.toLowerCase())
+                );
+              })
+              .filter((job) => {
+                return (
+                  this.state.minPrice === "" ||
+                  job.price >= this.state.minPrice
+                );
+              })
+              .filter((job) => {
+                return (
+                  this.state.maxPrice === "" ||
+                  job.price <= this.state.maxPrice
+                );
+              })
+              .sort((currentJob, nextJob) => {
+                switch (this.state.sortingParameter) {
+                  case "title":
+                    return (
+                      this.state.order *
+                      currentJob.title.localeCompare(nextJob.title)
+                    );
+                  case "dueDate":
+                    return (
+                      this.state.order *
+                      (new Date(currentJob.dueDate).getTime() -
+                        new Date(nextJob.dueDate).getTime())
+                    );
+                  default:
+                    return (
+                      this.state.order * (currentJob.price - nextJob.price)
+                    );
+                }
+              })
+              .map((data) => {
+                const isInCart = this.props.carrinho?.some(dataCart=>{
+                  return data.id === dataCart.id
+                })
+                  return (
+                    <JobCard key={data.id}>
+                      <h1>{data.title.toUpperCase()}</h1>
+                      <h3>{`$${data.price}`}</h3>
+                      <p>{`Data de expiração: ${data.dueDate.slice(
+                        8,
+                        10
+                      )}/${data.dueDate.slice(5, 7)}/${data.dueDate.slice(
+                        2,
+                        4
+                      )}`}</p>
+                      <DetailsDiv>
+                        <ViewDetailsP onClick={() => this.getActualId(data.id)}>
+                          Ver Detalhes
+                        </ViewDetailsP>
+                        {isInCart ?
+                        <ClickedItem>Item adicionado ao carrinho</ClickedItem>
+                        :
+                        <img
+                          onClick={() =>
+                            this.props.addServices(
+                              data.id,
+                              data.title,
+                              this.state.jobs
+                            )
+                          }
+                          src={Cart}
+                        />    
+                       }                      
+                      </DetailsDiv>
+                    </JobCard>
+                  );                
+              })}
             </ContainerMid>
             <MediumCart>
               <h1>CARRINHO</h1>

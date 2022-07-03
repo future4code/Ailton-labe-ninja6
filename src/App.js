@@ -9,7 +9,7 @@ import Footer from "./Components/Footer/Footer";
 export default class App extends React.Component {
   state = {
     actualScreen: "landpage",
-    carrinho: [],    
+    carrinho: [],
   };
   
   addServices = (info, name, jobs) => {
@@ -17,23 +17,24 @@ export default class App extends React.Component {
       return dados.id === info;
     });
     const cartCopy = [...this.state.carrinho];
-    const cartControl = cartCopy
-      .map((item) => {
-        return item.id;
-      })
-      .find((dado) => {
-        return dado === info;
-      });
-    if (cartControl === undefined) {
-      cartCopy.push(filterServices[0]);
-      this.setState({ carrinho: cartCopy });
-    } else {
-      alert(`O serviço ${name} já foi adicionado.`);
-    }
+    cartCopy.push(filterServices[0])
+    this.setState({carrinho: cartCopy})
+    // const cartControl = cartCopy
+    //   .map((item) => {
+    //     return item.id;
+    //   })
+    //   .find((dado) => {
+    //     return dado === info;
+    //   });
+    // if (cartControl === undefined) {
+    //   cartCopy.push(filterServices[0]);
+    //   this.setState({ carrinho: cartCopy });
+    // } else {
+    //   alert(`O serviço ${name} já foi adicionado.`);
+    // }
   };
 
-  removeService = (id) => {
-    
+  removeService = (id) => {    
     if (window.confirm('Tem certeza que deseja remover esse serviço do carrinho?')) {
     const deleteService = this.state.carrinho.filter((dados) => {
       return dados.id !== id;
