@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
-width: 100%;
-height: 14vh;
+width: 100vw;
+height: 16vh;
 background-color: black;
 display: flex;
 justify-content: space-around;
 align-items: center;
-border: 2px solid red;
+/* border: 2px solid red; */
 `
 export const ContainerItensMenu = styled.div `
 width: 100%;
@@ -15,25 +15,29 @@ display: flex;
 justify-content: space-evenly;
 color: white;
 align-items: center;
-border: 2px solid aqua;
+
 @media only screen and (max-width: 420px) {
     width: 100%;
     flex-direction: column;
+    gap:8px;
 }
 `
 
 export const LogoStyle = styled.img `
 height: 14vh;
+@media only screen and (max-width: 420px) {
+  
+}
 `
 export const ContainerLoginAndCart= styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-gap: 5px;
+gap: 8px;
 width: 10%;
 @media only screen and (max-width: 420px) {
     width: 25%;
-    flex-direction: column;
+    
 }
 `
 export const ContainerImg = styled.div `
@@ -73,7 +77,7 @@ cursor: pointer;
 `
 export const Nav = styled.nav `
 width: 100%;
-/* height: 4vh; */
+
 min-height: fit-content;
 background-color: #C93636;
 display: flex;
@@ -96,7 +100,7 @@ border: none;
 outline: none;
 padding: 8px;
 @media only screen and (max-width: 420px) {
-    width: 40%;
+    width: 60%;
 }
 `
 
@@ -120,6 +124,7 @@ img{
     height: 25px;
 }
 @media only screen and (max-width: 420px) {
-    height: 4vh;
+    height: 4.5vh;
+    width: 100px;
 }
 `

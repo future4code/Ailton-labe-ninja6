@@ -296,7 +296,8 @@ export default class JobList extends React.Component {
                 </BuyButton>
               </FooterCart>
             </MediumCart>
-          </PageCenter>
+          </PageCenter> 
+            <img src={Samuraizudo} />
         </Container>
       </>
     );
