@@ -51,7 +51,7 @@ export default class JobList extends React.Component {
   getAllJobs = () => {
     const url = "https://labeninjas.herokuapp.com/jobs";
     axios
-      .get(url, auth)
+      .get(url, demoauth)
       .then((res) => {
         this.setState({ jobs: res.data.jobs, loading: false });
       })
@@ -63,7 +63,7 @@ export default class JobList extends React.Component {
   deleteJob = (id) => {
     const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
     axios
-      .delete(url, auth)
+      .delete(url, demoauth)
       .then((res) => {
         console.log(res);
         alert("Serviço deletado");

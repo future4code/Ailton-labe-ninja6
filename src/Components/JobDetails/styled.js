@@ -23,6 +23,10 @@ img {
     color: white;
     font-size: 2rem;
 }
+@media screen and (max-width: 420px) {
+    width: 90%;
+    height: 90%;
+}
 `
 export const PaymentDiv = styled.div `
     display: flex;
@@ -42,6 +46,7 @@ color: white;
 font-size: 1.5rem;
 width: 80%;
 height: 60%;
+overflow: auto;
 `
 
 export const BackDetails = styled.div`
@@ -51,7 +56,6 @@ flex-direction: column;
 justify-content: space-between;
 align-items: center;
 width: 80%;
-
 p, img{
     color: white;
 }
@@ -76,6 +80,11 @@ img {
     padding: 2px;
     border-radius: 8px;
 }
+@media screen and (max-width: 420px) {
+    >p {
+        width: 100%;
+    }
+}
 `
 
 export const Containerzudo = styled.div`
@@ -84,6 +93,8 @@ height: 100vh;
 background-color: rgba(0, 0, 0, 0.75);
 position: fixed;
 top: 0;
+@media screen and (max-width: 420px) {
+}
 `
 
 export const MethodsCard = styled.p`
@@ -106,6 +117,9 @@ width: 75%;
 /* background-color: lime; */
 >h2 {
     color: #fff;
+}
+@media screen and (max-width: 420px) {
+    width: 100%;
 }
 `
 export const InfosDiv = styled.div`
@@ -134,6 +148,9 @@ display: flex;
     >p {
         color: #000;
     }
+    @media screen and (max-width: 420px) {
+    width: 100%;
+}
 `
 
 export const AddDiv = styled.div`

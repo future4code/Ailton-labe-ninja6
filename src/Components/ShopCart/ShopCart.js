@@ -26,11 +26,11 @@ const demoauth = {
 };
 
 export default class ShopCart extends React.Component {
-  state={
+  state = {
     jobs: [],
     details: false,
     clickedService: "",
-  }
+  };
   onClickFinalCart = () => {
     return alert("Compra finalizada com sucesso!");
   };
@@ -42,12 +42,17 @@ export default class ShopCart extends React.Component {
     this.setState({ details: false });
   };
   deleteJob = (id) => {
-    const url = `https://labeninjas.herokuapp.com/jobs/${id}`
-    axios.get(url, demoauth).then((res)=>{
-      console.log(res)
-      alert('Serviço deletado')      
-    }).catch(res=>{alert('Nosso servidor foi de berço')})
-  }
+    const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
+    axios
+      .get(url, demoauth)
+      .then((res) => {
+        console.log(res);
+        alert("Serviço deletado");
+      })
+      .catch((res) => {
+        alert("Nosso servidor foi de berço");
+      });
+  };
   render() {
     const somaPrecos = this.props.carrinho
       .map((item) => item.price)
@@ -68,7 +73,7 @@ export default class ShopCart extends React.Component {
           </DivCart>
           <DivPrice>
             {" "}
-            <h3>{`$${data.price} Pila`}</h3>
+            <h3>{`$${data.price}`}</h3>
           </DivPrice>
           <DivDate>
             <p>{`Data de expiração:
@@ -86,32 +91,31 @@ export default class ShopCart extends React.Component {
     return (
       <T>
         {this.state.details && (
-            <JobDetails
-              jobs={this.state.jobs}
-              addServices={this.props.addServices}
-              closePopUp={this.closePopUp}
-              id={this.state.clickedService}
-              deleteJob={this.deleteJob}
-              carrinho={this.props.carrinho}
-            />
-          )}
+          <JobDetails
+            jobs={this.state.jobs}
+            addServices={this.props.addServices}
+            closePopUp={this.closePopUp}
+            id={this.state.clickedService}
+            deleteJob={this.deleteJob}
+            carrinho={this.props.carrinho}
+          />
+        )}
         <TitleBig>Carrinho</TitleBig>
         <CartPage>
-          <BigCart>
-            {cartItens}
-          </BigCart>
-        <di>
-          <EndDiv>
-            <h1>Quantidade: {this.props.carrinho.length}
-            </h1>
-            <FooterCart>
-              <h4>Valor Total: {somaPrecos}</h4>
-              <BuyButton onClick={this.onClickFinalCart}>Finalizar Compra</BuyButton>
-            </FooterCart>
+          <BigCart>{cartItens}</BigCart>
+          <div>
+            <EndDiv>
+              <h1>Quantidade: {this.props.carrinho.length}</h1>
+              <FooterCart>
+                <h4>Valor Total: ${somaPrecos}</h4>
+                <BuyButton onClick={this.onClickFinalCart}>
+                  Finalizar Compra
+                </BuyButton>
+              </FooterCart>
             </EndDiv>
             <br />
             <img src={Semurai} />
-        </di>
+          </div>
         </CartPage>
       </T>
     );
