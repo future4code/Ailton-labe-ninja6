@@ -142,7 +142,9 @@ export const MediumCart = styled.aside`
     justify-content: center;
     min-height: 80%;
   }
- 
+  @media only screen and (max-width: 420px) {
+    height:370px;
+  }
 `
 export const JobCard = styled.div`
   display: flex;
