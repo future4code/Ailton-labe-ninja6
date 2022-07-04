@@ -53,7 +53,9 @@ export default class Header extends React.Component {
           <PStyle onClick={()=>this.props.changeScreen("landpage")}>Home</PStyle>
           <PStyle onClick={()=>this.props.changeScreen("jobRegister")}>Seja um Samurai</PStyle>
           <PStyle onClick={()=>this.props.changeScreen("jobList")}>Contrate um Samurai</PStyle>
-          <PStyle>Baixe nosso App</PStyle>
+          { <PStyle 
+          // onClick= "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+          >Baixe nosso App</PStyle> }
         </Nav>
       </div>
     );
