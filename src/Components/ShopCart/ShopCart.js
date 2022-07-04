@@ -21,6 +21,7 @@ import {
 } from "./styled";
 import Semurai from "../img/semuray.png";
 
+const auth = {headers: {Authorization: "809503c1-0082-48d9-a9f3-7c1b054ffb8c"}} 
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
 };
@@ -32,6 +33,7 @@ export default class ShopCart extends React.Component {
     clickedService: "",
   };
   onClickFinalCart = () => {
+    this.props.cleanCart()
     return alert("Compra finalizada com sucesso!");
   };
   getActualId = (id) => {
@@ -44,7 +46,7 @@ export default class ShopCart extends React.Component {
   deleteJob = (id) => {
     const url = `https://labeninjas.herokuapp.com/jobs/${id}`;
     axios
-      .get(url, demoauth)
+      .get(url, auth)
       .then((res) => {
         console.log(res);
         alert("Serviço deletado");

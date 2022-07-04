@@ -19,6 +19,7 @@ import Cart from "../img/iconcart.png";
 import CartPreto from "../img/iconcartpreto.png";
 import LoadingScreen from "../Loading Screen/LoadingScreen";
 
+const auth = {headers: {Authorization: "809503c1-0082-48d9-a9f3-7c1b054ffb8c"}}
 const demoauth = {
   headers: { Authorization: "e2190c39-7930-4db4-870b-bed0e5e4b88e" },
 };
@@ -36,7 +37,7 @@ export default class JobDetails extends React.Component {
   getJobById = () => {
     const url = `https://labeninjas.herokuapp.com/jobs/${this.props.id}`;
     axios
-      .get(url, demoauth)
+      .get(url, auth)
       .then((res) => {
         this.setState({ jobInfos: res.data, loading: false });
         this.isInCart();

@@ -116,6 +116,10 @@ color: black;
 align-items: center;
 justify-content: center;
 cursor: pointer;
+transition: .2s ease;
+:hover{
+    background-color: #bbbbbb;
+}
 p{
     font-size:.8rem
 }

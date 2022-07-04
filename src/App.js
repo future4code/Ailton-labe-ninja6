@@ -19,21 +19,11 @@ export default class App extends React.Component {
     const cartCopy = [...this.state.carrinho];
     cartCopy.push(filterServices[0])
     this.setState({carrinho: cartCopy})
-    // const cartControl = cartCopy
-    //   .map((item) => {
-    //     return item.id;
-    //   })
-    //   .find((dado) => {
-    //     return dado === info;
-    //   });
-    // if (cartControl === undefined) {
-    //   cartCopy.push(filterServices[0]);
-    //   this.setState({ carrinho: cartCopy });
-    // } else {
-    //   alert(`O serviço ${name} já foi adicionado.`);
-    // }
   };
 
+  cleanCart = () =>{
+    this.setState({carrinho:[]})
+  }
   removeService = (id) => {    
     if (window.confirm('Tem certeza que deseja remover esse serviço do carrinho?')) {
     const deleteService = this.state.carrinho.filter((dados) => {
@@ -63,6 +53,7 @@ export default class App extends React.Component {
             addServices={this.addServices}
             removeService={this.removeService}
             carrinho={this.state.carrinho}
+            cleanCart={this.cleanCart}
           />
         );
     }
