@@ -39,8 +39,29 @@ justify-content: space-around;
 height: 100%;
 width: 100%;
 background-color: rgba(0, 0, 0, 0.4);
+
+  @media only screen and (max-width: 420px) {
+    display: flex;
+    flex-direction: column;
+  }  
+  
+   @media only screen and (min-width: 421px) and  (max-width: 820px) {
+    display: flex;
+    flex-direction: column;
+}
 `
 
 export const TextSection = styled.div`
 margin-bottom: 25%;
+
+  @media only screen and (max-width: 420px) {
+
+  font-size: 0.6rem;
+  margin-bottom: 0px;
+}
+
+@media only screen and (min-width: 421px) and  (max-width: 820px) {
+  font-size: 0.9rem;
+  margin-bottom: 0px;
+}
 `
