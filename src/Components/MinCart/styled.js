@@ -1,21 +1,27 @@
 import styled from "styled-components";
 
 export const MinCartContainer = styled.div`
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   width: 320px;
   height: 300px;
   border:2px solid #303030;
   border-radius: 12px;
   background-color: #303030;
   color:#fff;
-  right:5%;
-  top:90px;
+  right: 12vw;
+  top: 100px;
   padding: 4px;
   overflow: auto;
   > p {
     display: flex;
     justify-content: center;
     min-height: 80%;
+  }
+  @media screen and (max-width: 420px){
+    left: 50%;
+    top: 260px;
+    transform: translate(-50%, -50%);
   }
 `
 export const CartCard2 = styled.div`

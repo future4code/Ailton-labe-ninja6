@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
-width: 100vw;
+width: 100%;
 height: 16vh;
 background-color: black;
 display: flex;
 justify-content: space-around;
 align-items: center;
-/* border: 2px solid red; */
 `
 export const ContainerItensMenu = styled.div `
 width: 100%;
+height: 100%;
 display: flex;
 justify-content: space-evenly;
 color: white;
 align-items: center;
-
+/* background-color: red; */
 @media only screen and (max-width: 420px) {
     width: 100%;
     flex-direction: column;
@@ -25,8 +25,7 @@ align-items: center;
 
 export const LogoStyle = styled.img `
 height: 14vh;
-@media only screen and (max-width: 420px) {
-  
+@media only screen and (max-width: 420px) {  
 }
 `
 export const ContainerLoginAndCart= styled.div`
@@ -41,7 +40,7 @@ width: 10%;
 }
 `
 export const ContainerImg = styled.div `
-width: 10%;
+width: 33%;
 display: flex;
 align-items: center;
 justify-content: center;

@@ -12,6 +12,8 @@ import {
   InfosDiv,
   AddedDiv,
   AddDiv,
+  AcceptedMethods,
+  Title,
 } from "../JobDetails/styled";
 import Cart from "../img/iconcart.png";
 import CartPreto from "../img/iconcartpreto.png";
@@ -37,7 +39,7 @@ export default class JobDetails extends React.Component {
       .get(url, demoauth)
       .then((res) => {
         this.setState({ jobInfos: res.data, loading: false });
-        this.isInCart()
+        this.isInCart();
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +48,7 @@ export default class JobDetails extends React.Component {
 
   render() {
     const filterId = this.props.carrinho?.some((data) => {
-      return data.id === this.props.id
+      return data.id === this.props.id;
     });
     const paymentMethods = this.state.jobInfos.paymentMethods?.map(
       (dados, index) => {
@@ -60,10 +62,10 @@ export default class JobDetails extends React.Component {
             <LoadingScreen />
           ) : (
             <>
-              <h1>{this.state.jobInfos.title?.toUpperCase()}</h1>
+              <Title>{this.state.jobInfos.title?.toUpperCase()}</Title>
               <Description>{this.state.jobInfos.description}</Description>
+              <AcceptedMethods>Métodos de pagamento</AcceptedMethods>
               <PaymentDiv>
-                Métodos de pagamento
                 <MethodsDiv>{paymentMethods}</MethodsDiv>
               </PaymentDiv>
               <ValueAndDate>
@@ -96,8 +98,8 @@ export default class JobDetails extends React.Component {
                       this.props.addServices(
                         this.state.jobInfos.id,
                         this.state.jobInfos.title,
-                        this.props.jobs,
-                        )
+                        this.props.jobs
+                      )
                     }
                   >
                     <p>Adicionar ao Carrinho</p>
