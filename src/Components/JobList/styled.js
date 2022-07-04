@@ -144,6 +144,7 @@ export const MediumCart = styled.aside`
   }
   @media only screen and (max-width: 420px) {
     height:370px;
+    
   }
 `
 export const JobCard = styled.div`
@@ -165,15 +166,19 @@ export const JobCard = styled.div`
     height: 160px;
   }
   h1 {
+    @media only screen and (max-width: 420px) {
+      text-align:center;
+    }
     color: #ff5252;
   }
   @media only screen and (max-width: 420px) {
-    width: 70%;
+    width: 75%;
     height: 180px;
     :hover {
-    width: 70%;
-    height: 200px;
+    width: 75%;
+    height: 180px;
   }
+
   }
 `
 
