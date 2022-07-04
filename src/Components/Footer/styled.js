@@ -56,7 +56,7 @@ transition: .2s ease;
 `
 export const ContainerDev = styled.div `
 width: 20%;
-height: 90%;
+height: 80%;
 color: white;
 display: flex;
 justify-content: center;
@@ -65,6 +65,9 @@ flex-direction: column;
 font-size: 1.1rem;
 gap: 15px;
 margin: 6px;
+flex-wrap: wrap;
+padding: 10px;
+/* white-space: nowrap; */
 @media only screen and (max-width: 420px) {
     width: 100%;
     height: fit-content;
@@ -102,8 +105,9 @@ img{
 `
 export const DevsLine = styled.div `
 display: flex;
+width: 100%;
 @media only screen and (max-width: 420px) {
-    width: 100%;
+    
     justify-content: space-between;
 }
 `

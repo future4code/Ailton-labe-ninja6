@@ -9,17 +9,17 @@ display: flex;
 `
 export const ContainerGeral = styled.div `
 display: flex;
-width: 80%;
+width: 100%;
 justify-content: space-evenly;
 height: fit-content; 
 align-items: center;
-/* padding: 64px; */
+padding: 64px;
 /* border: 2px solid red; */
 @media only screen and (max-width: 420px) {
     width: 100vw;
     font-size: .8rem;
     flex-direction: column;
-    /* padding:6px; */
+    padding:6px;
     align-items: stretch;
 }
 `
@@ -82,11 +82,16 @@ margin-top: 20px;
 `
 
 export const ContainerSamuraizudo = styled.div`
-/* margin-top: 30px; */
+display: flex;
+/* @media only screen and (max-width: 420px) { */
+justify-content: center;
+/* } */
 >img{
     width: 420px;
     @media only screen and (max-width: 420px) {
         width: 320px;
+      
+
     }
 }
 `
