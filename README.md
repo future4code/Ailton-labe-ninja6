@@ -75,21 +75,25 @@ $ npm run start
 [LinkedIn](https://www.linkedin.com/in/gabriel-theodoro-ferreira-680b1a18a/)
 <br>
 [GitHub](https://github.com/gabthe)
+
 - Julia Moniz
 <br>
 [LinkedIn](https://www.linkedin.com/in/j%C3%BAlia-moniz-a912b9172/)
 <br>
 [GitHub](https://github.com/JuliaMoniz27)
+
 - João Zang
 <br>
 [LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-zang-gomes-063282163/)
 <br>
 [GitHub](https://github.com/joaozang)
+
 - Daniel Andrade
 <br>
 [LinkedIn](https://www.linkedin.com/in/daniel-andrade-b91246177/)
 <br>
 [GitHub](https://github.com/DanielAndrade7)
+
 - André Luiz
 <br>
 [LinkedIn](https://www.linkedin.com/in/andr%C3%A9-luiz-amaral-oliveira-bispo-00a48122a/)
