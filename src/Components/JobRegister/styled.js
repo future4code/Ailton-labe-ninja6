@@ -3,23 +3,23 @@ import styled from "styled-components";
 export const Container = styled.div`
 display: flex;
 @media only screen and (max-width: 420px) {
-    width: 100%;
+    width: 90%;
     align-items: center;
 }
 `
 export const ContainerGeral = styled.div `
 display: flex;
-width: 100%;
+width: 80%;
 justify-content: space-evenly;
 height: fit-content; 
 align-items: center;
 /* padding: 64px; */
 /* border: 2px solid red; */
 @media only screen and (max-width: 420px) {
-    width: fit-content;
+    width: 100vw;
     font-size: .8rem;
     flex-direction: column;
-    padding:26px;
+    /* padding:6px; */
     align-items: stretch;
 }
 `

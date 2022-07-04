@@ -1,7 +1,91 @@
 import styled from "styled-components";
 
+
+
+export const Container = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0px 32px;
+  height: fit-content;
+  @media only screen and (max-width: 420px) {
+    /* background-color: aqua; */
+    /* flex-direction:row; */
+    padding: 10px 10px
+   
+}
+`
+
+export const ServiceTitle = styled.h1`
+  margin: 24px;
+  @media only screen and (max-width: 420px) {
+    /* background-color: aqua; */
+    /* flex-direction:row; */
+   
+}
+`
+
+export const PageCenter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  @media only screen and (max-width: 420px) {
+    /* background-color: aqua; */
+    flex-direction:column;
+    align-items: center;
+   /* gap:16px; */
+}
+`
+
+export const FilterAndSamuraizudo = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  > img {
+    width: 500px;
+    @media only screen and (max-width: 420px) {
+    display:none;
+   
+}
+  }
+ 
+`
+
+export const Filter = styled.aside`
+  width: 300px;
+  height: fit-content;
+  padding: 12px;
+  border: 1px solid black;
+  box-shadow: 4px 4px darkgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 420px) {
+    /* background-color: aqua; */
+    /* flex-direction:row; */
+   
+}
+`
+
+export const FilterTypeSelect = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  /* flex-direction: column; */
+  @media only screen and (max-width: 420px) {
+    /* background-color: aqua; */
+    /* flex-direction:row; */
+   
+}
+
+`
 export const ContainerMid = styled.div`
   display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   flex-wrap: wrap;
   width: 60vw;
@@ -19,96 +103,16 @@ export const ContainerMid = styled.div`
     background-color: #ff5252;
     border-radius: 12px;
   }
-`;
-export const JobCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 8px;
-  width: 40%;
-  height: 150px;
-  overflow: auto;
-  box-shadow: 4px 4px #ff5252;
-  border-radius: 8px;
-  background-color: #303030;
-  color: white;
-  top: 0;
-  transition: 0.3s;
-  :hover {
-    width: 42%;
-    height: 160px;
-  }
-  h1 {
-    color: #ff5252;
-  }
-`;
+  @media only screen and (max-width: 420px) {
+    /* background-color: red; */
+    width: 89vw;
+    flex-direction:column;
+    height: 70vh;
 
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0px 32px;
-`;
+   
+}
 
-export const ServiceTitle = styled.h1`
-  margin: 24px;
-`;
-
-export const DetailsDiv = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  height: 32px;
-  gap: 12px;
-  padding: 4px;
-  margin-top: 12px;
-  img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    cursor: pointer;
-  }
-`;
-
-export const ViewDetailsP = styled.p`
-  color: #ff5252;
-  cursor: pointer;
-  :hover {
-    color: white;
-    transition: 0.2s linear;
-  }
-`;
-
-export const ClickedItem = styled.p`
-  color: #bbbbbb;
-  user-select: none;
-  transition: 0.1s linear;
-  :hover {
-    color: #e0e0e0;
-  }
-`;
-
-export const Filter = styled.aside`
-  width: 300px;
-  height: fit-content;
-  padding: 12px;
-  border: 1px solid black;
-  box-shadow: 4px 4px darkgray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const PageCenter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
+`
 export const MediumCart = styled.aside`
   width: 300px;
   height: 500px;
@@ -130,7 +134,82 @@ export const MediumCart = styled.aside`
     justify-content: center;
     min-height: 80%;
   }
-`;
+ 
+`
+export const JobCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  width: 40%;
+  height: 150px;
+  overflow: auto;
+  box-shadow: 4px 4px #ff5252;
+  border-radius: 8px;
+  background-color: #303030;
+  color: white;
+  top: 0;
+  transition: 0.3s;
+  :hover {
+    width: 42%;
+    height: 160px;
+  }
+  h1 {
+    color: #ff5252;
+  }
+  @media only screen and (max-width: 420px) {
+    width: 70%;
+    height: 180px;
+    :hover {
+    width: 70%;
+    height: 200px;
+  }
+  }
+`
+
+
+
+
+export const DetailsDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 32px;
+  gap: 12px;
+  padding: 4px;
+  margin-top: 12px;
+  img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    cursor: pointer;
+  }
+
+`
+
+export const ViewDetailsP = styled.p`
+  color: #ff5252;
+  cursor: pointer;
+  :hover {
+    color: white;
+    transition: 0.2s linear;
+  }
+`
+
+export const ClickedItem = styled.p`
+  color: #bbbbbb;
+  user-select: none;
+  transition: 0.1s linear;
+  :hover {
+    color: #e0e0e0;
+  }
+`
+
+
+
+
 export const CartCard = styled.div`
   display: flex;
   width: 100%;
@@ -149,7 +228,8 @@ export const CartCard = styled.div`
   > img {
     width: 26px;
   }
-`;
+  
+`
 export const ServiceCart = styled.div`
   display: flex;
   flex-direction: column;
@@ -166,15 +246,9 @@ export const ServiceCart = styled.div`
     background-color: #ff5252;
     border-radius: 12px;
   }
-`;
-export const FooterCart = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 10%;
-  padding: 12px;
-`;
+  
+`
+
 
 export const NameAndPrice = styled.div`
   width: 100%;
@@ -183,23 +257,18 @@ export const NameAndPrice = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-`;
+`
 
-export const FilterTypeSelect = styled.div`
+
+
+export const FooterCart = styled.div`
   display: flex;
-  align-items: center;
-  gap: 4px;
-`;
-export const FilterAndSamuraizudo = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   justify-content: space-between;
-  width: 300px;
-  > img {
-    width: 500px;
-  }
-`;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+  padding: 12px;
+`
 export const BuyButton = styled.p`
   display: flex;
   justify-content: center;
@@ -215,4 +284,4 @@ export const BuyButton = styled.p`
     background-color: #ff5252;
     transition: 0.15s ease;
   }
-`;
+`
