@@ -18,7 +18,7 @@ export default class styled extends React.Component {
         <ContainerMenu>
           <FooterPoint>-Sobre nós</FooterPoint>
           <FooterPoint>-Fale conosco</FooterPoint>
-          <FooterPoint>-Dúvidas frequentes</FooterPoint>
+          <FooterPoint>-Dúvidas frequentes - FAQ</FooterPoint>
           <FooterPoint>-Trabalhe conosco</FooterPoint>
           <FooterPoint>-Nosso App</FooterPoint>
           <FooterPoint>-Termos de serviço</FooterPoint>
