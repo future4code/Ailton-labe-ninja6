@@ -16,6 +16,14 @@ export const Container = styled.section`
     padding: 10px 10px
    
 }
+> img {
+  display:none;
+    
+    @media only screen and (max-width: 420px) {
+    display:flex;
+   width:320px;
+}
+}
 `
 
 export const ServiceTitle = styled.h1`
