@@ -35,6 +35,13 @@ export const PaymentDiv = styled.div `
     gap: 12px;
     font-size: 25px;
     color:white;
+    white-space: nowrap;
+    @media screen and (max-width: 420px) {
+    overflow: auto;
+    height: 124px;
+    width: 100%;
+    align-items: flex-start;
+}
 `
 export const Description = styled.p`
 display: flex;
@@ -43,7 +50,7 @@ border: 1px solid #fff;
 border-radius: 12px;
 padding: 16px;
 color: white;
-font-size: 1.5rem;
+font-size: 1rem;
 width: 80%;
 height: 60%;
 overflow: auto;
@@ -167,4 +174,18 @@ display: flex;
         background-color: #ff1a1a;
         transition: .15s ease;
     }
+    @media screen and (max-width: 420px) {
+    width: 100%;
+}
+`
+
+export const AcceptedMethods = styled.p`
+color: white;
+font-size: 1.2rem;
+`
+
+export const Title = styled.p`
+color: white;
+text-align: center;
+font-size: 2rem;
 `
