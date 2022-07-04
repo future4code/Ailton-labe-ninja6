@@ -9,6 +9,9 @@ img{
     height:290px;
     width: 280px;
 }
+@media screen and (max-width: 420px) {
+  flex-direction:column ;
+}
 
 `
 export const T = styled.div`
@@ -25,8 +28,10 @@ export const TitleBig = styled.h1`
     font-weight: 500;
     margin-left: 36px;
     :hover {
-
     }
+    @media screen and (max-width: 420px) {
+    margin: 0 auto;
+}
 `
 export const BigCart = styled.div`
 background-color: #ffff;
@@ -83,6 +88,13 @@ height: 120px;
 width: 100%;
 align-items:center;
 box-shadow: 4px 4px #ff5252;
+padding: 12px;
+@media screen and (max-width: 420px){
+  flex-direction: column;
+  height: fit-content;
+  border-radius: 12px;
+  gap: 0px;
+}
 `
 export const Title = styled.p`
 color:#ff5252;
@@ -99,14 +111,23 @@ transition: .2s ease;
     color: white;
     text-decoration: underline;
 }
+@media screen and (max-width: 420px){
+  width: 100%;
+}
 `
 export const PayMethods = styled.h3`
+display: flex;
+justify-content: center;
+align-items: center;
 background-color: #ffd700;
 font-size: 0.8rem;
 white-space: nowrap;
 border-radius: 12px;
 padding: 4px;
-color:#000
+color:#000;
+@media screen and (max-width: 420px){
+  width: fit-content;
+}
 `
 export const DivCart = styled.div`
 /* background-color: grey; */
@@ -133,8 +154,12 @@ transition: 1s ease;
 :hover p{
   padding: 2px;
   background-color: #ff5252;
-  border-radius: 8px;
+  border-radius: 8px;  
   cursor: pointer;
+}
+@media screen and (max-width: 420px){
+  width: 100%;
+  height: 40px;
 }
 `
 export const DivPrice = styled.div`
@@ -146,6 +171,10 @@ justify-content:center;
 align-items: center;
 font-weight: bold;
 color:#ff5252;
+@media screen and (max-width: 420px){
+  width: 100%;
+  height: 40px;
+}
 `
 export const DivDate = styled.div`
 /* background-color:grey; */
@@ -157,6 +186,10 @@ justify-content:center;
 align-items: center;
 >p{
 text-align:center;
+}
+@media screen and (max-width: 420px){
+  width: 100%;
+  height: 40px;
 }
 `
 export const RemoveBt = styled.p`
