@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+<h1> Readme </h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Projeto em grupo Samuralab (Labeninjas)
+![Logo](src/Components/img/logoNoBg.png)
 
-## Available Scripts
+<a href="https://tiny-pet.surge.sh/" target="_blank">Link Surge</a>
 
-In the project directory, you can run:
+<p align="center">
+<a href="#sobre" >Sobre</a>
+<a href="#tecnologias">Tecnologias</a>
+<a href="#features">Features</a>
+<a href="#páginas">Páginas</a>
+<a href="#link">Link</a>
+<a href="#pré-requisitos">Pré-requisitos</a>
+<a href="#autores">Autores</a>
+</p>
 
-### `npm start`
+# Sobre
+O Samuralab é uma simulação de um site de contratação e prestação de serviços, inspirado no [GetNinjas](https://www.getninjas.com.br/). 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Nele os prestadores podem cadastrar os seus serviços, enquanto os úsuarios dispõem de uma página especifica para contratação de serviços.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+# Tecnologias
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As seguintes ferramentas foram usadas na construção do projeto:
 
-### `npm run build`
+- [React](https://pt-br.reactjs.org/)
+- JavaScript
+- CSS
+- Git
+- Styled-Component
+- Api-Rest
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Features
+- [x] Cadastrar Serviço
+- [x] Visualizar serviçs cadastrados
+- [x] Filtrar serviços cadastrados 
+  - Ordenação (Título,Valor ou Prazo)
+  - Busca (Título ou Descrição)
+  - Filtro (Valor máximo e mínimo)
+- [x] Carrinho
+  - Adicionar itens
+  - Remover itens
+  - Visualizar (Valor total e quantidade)
+- [x] Implementação de tela de detalhes (pop-up)
+- [x] Implementação de pop-up carrinho (em qualquer tela)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Link 
+Para vizualizar o projeto é possível acesá-lo através do link a seguir:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a href="https://tiny-pet.surge.sh/" target="_blank">Link Surge</a>
 
-### `npm run eject`
+# Pré-requisitos
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintesferramentas: [Git](https://git-scm.com/), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código com [VSCode](https://code.visualstudio.com/download).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Rodando o Front End
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+#Clone este tepositório 
+$ git clone<https://github.com/future4code/Ailton-labe-ninja6.git>
+#Acesse a pasta do projeto no terminal/cd
+$ cd Ailton-labe-ninja6
+#Execute a aplicação em modo de desenvolvimento 
+$ npm run start 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#O servidor iniciará na porta:3000 - acesse <http://localhost:3000/>
+```
 
-## Learn More
+# Autores
+- Gabriel Theodoro 
+<br>
+[LinkedIn](https://www.linkedin.com/in/gabriel-theodoro-ferreira-680b1a18a/)
+<br>
+[GitHub](https://github.com/gabthe)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Julia Moniz
+<br>
+[LinkedIn](https://www.linkedin.com/in/j%C3%BAlia-moniz-a912b9172/)
+<br>
+[GitHub](https://github.com/JuliaMoniz27)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- João Zang
+<br>
+[LinkedIn](https://www.linkedin.com/in/jo%C3%A3o-pedro-zang-gomes-063282163/)
+<br>
+[GitHub](https://github.com/joaozang)
 
-### Code Splitting
+- Daniel Andrade
+<br>
+[LinkedIn](https://www.linkedin.com/in/daniel-andrade-b91246177/)
+<br>
+[GitHub](https://github.com/DanielAndrade7)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- André Luiz
+<br>
+[LinkedIn](https://www.linkedin.com/in/andr%C3%A9-luiz-amaral-oliveira-bispo-00a48122a/)
+<br>
+[GitHub](https://github.com/Aluizx6)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
